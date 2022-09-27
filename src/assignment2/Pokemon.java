@@ -83,8 +83,8 @@ public class Pokemon {
     }
 
     //3.1 - Learn and Forget Skills:
-    public void learnSkill(String name, int attackPower, int energyCost) {
-        this.pokemonSkill = new Skill(name, attackPower, energyCost);
+    public void learnSkill(String name, int attackPower, int EC) {
+        this.pokemonSkill = new Skill(name, attackPower, EC);
     }
 
     public void forgetSkill() {
@@ -126,23 +126,25 @@ public class Pokemon {
 
 
     //3.3 - Spend and Recover Energy Points:
-    public void spendEP(int ec) {
-        if(this.EP >= ec){
-            this.EP-=ec;
+    public void spendEP(int EC) {
+        if(this.EP >= EC){
+            this.EP-=EC;
         }
     }
     //A pokemon uses EP during battle
     //However, a pokemon can recover energy where a fixed amount of 25 EP is restored.
     // Restoring energy has no effect on a pokemon that has fainted.
 
-    public void recoverEP() {
+    public void recoverEnergy() {
         //If pokemon has not fainted
         if (!this.hasFainted) {
             this.EP += 25;
         }
     }
 
+    public void attack(){
 
+    }
     //Task 5: Pokemon Battle
     //
     //Pokemon compete with each other in battles.
