@@ -23,11 +23,11 @@ public class Pokemon {
     public int MAX_HP;
     private int currentHP;
     private int EP;
-    public String pokemonType;
+    public Type pokemonType;
     public Skill pokemonSkill;
     private boolean hasFainted = true;
 
-    public Pokemon(String name, int MAX_HP, String pokemonType) {
+    public Pokemon(String name, int MAX_HP, Type pokemonType) {
         this.name = name;
         this.MAX_HP = MAX_HP;
         this.EP = MAX_HP;
@@ -49,7 +49,7 @@ public class Pokemon {
     public int getEnergy() {return this.EP;}
     public int getCurrentHP() {return this.currentHP;}
     public String getName() {return this.name;}
-    public String getType() {return this.pokemonType;}
+    public Type getType() {return this.pokemonType;}
     public int getMAX_HP() {return this.MAX_HP;}
 
     /*Two pokemons are equal if they have the same name, type, skill, HP, MAX HP, and EP.
@@ -181,49 +181,3 @@ public class Pokemon {
 //"Attack failed. <attacker> lacks energy: <ep>/<ec>"
 //
 //5: If the attacker has enough EP to use the assignment2.Skill, then the attack is successful.
-
-
-
-
-
-
-
-    /*public void calcTypeAttacks() {
-        int damage = pokemonSkill.getAttackPower();
-        if (this.pokemonType == assignment2.Type.WATER && pokemonType == assignment2.Type.FIRE) {
-            //If attacker's type is water AND target's type is fire
-            //THEN attackPower = attackPower * 2
-            receiveDamage(damage * 2);
-        } else if (this.pokemonType == assignment2.Type.WATER && (pokemonType == assignment2.Type.GRASS | pokemonType == assignment2.Type.WATER)) {
-            //If attacker's type is water AND target's type is grass OR water
-            //THEN attackPower = attackPower * 0.5
-            receiveDamage(damage * (1/2));
-            /*Super effective against fire-type pokemon (damage * 2)
-            Not very effective against grass- and other water-type pokemons (damage * 0.5)
-        } else if (this.pokemonType == assignment2.Type.FIRE && pokemonType == assignment2.Type.GRASS) {
-            //If attacker's type is fire AND target's type is grass
-            //THEN attackPower = attackPower * 2
-            receiveDamage(damage * 2);
-        } else if (this.pokemonType == assignment2.Type.FIRE && (pokemonType == assignment2.Type.WATER | pokemonType == assignment2.Type.FIRE)) {
-            //If attacker's type is fire AND target's type is water OR fire
-            //THEN attackPower = attackPower * 0.5
-            receiveDamage(damage * (1/2));
-            /*Super effective against grass-type pokemon (damage * 2)
-Not very effective against water- and other fire-type pokemons (damage * 0.5)
-        } else if (this.pokemonType == assignment2.Type.GRASS && pokemonType == assignment2.Type.WATER) {
-            //If attacker's type is grass AND target's type is water
-            //THEN attackPower = attackPower * 2
-            receiveDamage(damage * 2);
-        } else if (this.pokemonType == assignment2.Type.GRASS && (pokemonType == assignment2.Type.FIRE | pokemonType == assignment2.Type.GRASS)) {
-            //If attacker's type is grass AND target's type is fire OR grass
-            //THEN attackPower = attackPower * 0.5
-            receiveDamage(damage * (1/2));
-            /*Super effective against water-type pokemon (damage * 2)
-            Not very effective against fire and other grass-type pokemons (damage * 0.5)
-        } else {
-            /*Normal-type pokemon do not have an advantage or disadvantage against any type. Their
-            damage multiplier is always damage * 1.
-            receiveDamage(damage * 1);
-            }
-     */
-
