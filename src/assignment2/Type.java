@@ -1,4 +1,4 @@
-/*For this assignment, we will use four types of pokemon: Water, Fire, Grass and Normal.
+package assignment2;/*For this assignment, we will use four types of pokemon: Water, Fire, Grass and Normal.
     These types offer advantage for the pokemon’s attack and defence during battle. During
     attacks, the damage has a multiplier that can significantly increase or reduce the damage
     value.

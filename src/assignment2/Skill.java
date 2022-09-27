@@ -1,3 +1,5 @@
+package assignment2;
+
 public class Skill {
     /*A pokemon relies on a skill during battles. A skill has a name, attack power (AP), and energy
     cost (EC). All these values are specified when creating the skill. Both AP and energy cost are
