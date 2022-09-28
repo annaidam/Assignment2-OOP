@@ -15,7 +15,7 @@ public class Skill {
         this.energyCost = energyCost;
     }
 
-    public String getSkill() {
+    public String getSkillName() {
         return this.name;
     }
 
@@ -45,7 +45,7 @@ public class Skill {
     }
 
     public String toString() {
-        String skill = this.getSkill() + " - AP: " + this.getAttackPower() + " EC: " + this.getEnergyCost();
+        String skill = this.getSkillName() + " - AP: " + this.getAttackPower() + " EC: " + this.getEnergyCost();
         return skill;
     }
 }

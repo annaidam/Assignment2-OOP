@@ -48,11 +48,25 @@ public class Pokemon {
         this.pokemonType = pokemonType;
     }
 
-    public int getEnergy() {return this.EP;}
-    public int getCurrentHP() {return this.currentHP;}
-    public String getName() {return this.name;}
-    public Type getType() {return this.pokemonType;}
-    public int getMAX_HP() {return this.MAX_HP;}
+    public int getEnergy() {
+        return this.EP;
+    }
+
+    public int getCurrentHP() {
+        return this.currentHP;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public Type getType() {
+        return this.pokemonType;
+    }
+
+    public int getMAX_HP() {
+        return this.MAX_HP;
+    }
 
     /*Two pokemons are equal if they have the same name, type, skill, HP, MAX HP, and EP.
     When printed, the pokemon should return one of two options below:*/
@@ -126,11 +140,10 @@ public class Pokemon {
     }
 
 
-
     //3.3 - Spend and Recover Energy Points:
     public void spendEP(int EC) {
-        if(this.EP >= EC){
-            this.EP-=EC;
+        if (this.EP >= EC) {
+            this.EP -= EC;
         }
     }
     //A pokemon uses EP during battle
@@ -146,29 +159,27 @@ public class Pokemon {
 
     public void useItem(Item item) {
         currentHP += item.getHealing_power();
-        if(currentHP > MAX_HP)
+        if (currentHP > MAX_HP)
             currentHP = MAX_HP;
     }
 
-        public void attack(Pokemon targetPokemon){
-            this.targetPokemon= targetPokemon;
+    public void attack(Pokemon targetPokemon) {
+        this.targetPokemon = targetPokemon;
 
 
-
-
-            if(this.hasFainted) {
-                System.out.println("Attack failed. "+  getName() + " fainted.");
-                if(this.targetPokemon.hasFainted) {
-                    System.out.println("Attack failed. "+  getName() + " fainted.");
-                    if (this.pokemonSkill == null) {
-                        System.out.println("Attack failed. "+  getName() + "does not know a skill.");
-                        if (this.pokemonSkill != null && this.EP<this.pokemonSkill.getEnergyCost()) {
-                        }
+        if (this.hasFainted) {
+            System.out.println("Attack failed. " + getName() + " fainted.");
+            if (this.targetPokemon.hasFainted) {
+                System.out.println("Attack failed. " + targetPokemon.getName() + " fainted.");
+                if (this.pokemonSkill == null) {
+                    System.out.println("Attack failed. " + getName() + "does not know a skill.");
+                    if (this.pokemonSkill != null && this.EP < this.pokemonSkill.getEnergyCost()) {
                     }
                 }
-
-
             }
+        }
+    }
+}
     //Task 5: Pokemon Battle
     //
     //Pokemon compete with each other in battles.
