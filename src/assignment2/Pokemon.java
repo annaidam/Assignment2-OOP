@@ -61,8 +61,10 @@ public class Pokemon {
         } else if (anotherPokemon instanceof Pokemon) {
             Pokemon otherPokemon = (Pokemon) anotherPokemon;
             if ((this.name.equals(otherPokemon.name)) &&
-                    (this.pokemonType.equals(otherPokemon.pokemonType)) && (this.pokemonSkill.equals(otherPokemon.pokemonSkill)) &&
-                    (this.currentHP == otherPokemon.currentHP) && (this.MAX_HP == otherPokemon.MAX_HP) &&
+                    (this.pokemonType.equals(otherPokemon.pokemonType)) &&
+                    (this.pokemonSkill.equals(otherPokemon.pokemonSkill)) &&
+                    (this.currentHP == otherPokemon.currentHP) &&
+                    (this.MAX_HP == otherPokemon.MAX_HP) &&
                     (this.EP == otherPokemon.EP)) {
                 return true;
             } else {
@@ -100,9 +102,9 @@ public class Pokemon {
     }*/
 
     public boolean knowsSkill() {
-        if (this.pokemonSkill != null)
+        if (this.pokemonSkill != null) {
             this.knowsSkill = true;
-     else {
+        } else {
             this.knowsSkill = false;
             this.pokemonSkill = new Skill(name, pokemonSkill.getAttackPower(), pokemonSkill.getEnergyCost());
         }
