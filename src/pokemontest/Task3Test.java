@@ -2,6 +2,7 @@ package pokemontest;
 
 
 import assignment2.Pokemon;
+import assignment2.Type;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -10,10 +11,10 @@ public class Task3Test {
 
     @Test
     public void shouldReceiveDamage(){
-        Pokemon gyarados = new Pokemon("Gyarados", 100, "Water");
+        Pokemon gyarados = new Pokemon("Gyarados", 100, Type.WATER);
         gyarados.learnSkill("OP Hyper Beam", 100, 10); //Cheap EC so gyrados doesnt need to rest.
 
-        Pokemon wigglytuff = new Pokemon("Wigglytuff", 120, "Normal");
+        Pokemon wigglytuff = new Pokemon("Wigglytuff", 120, Type.NORMAL);
         assertEquals(120, wigglytuff.getCurrentHP());
         wigglytuff.learnSkill("Double Slap", 40, 28);
 
@@ -31,12 +32,12 @@ public class Task3Test {
 
     @Test
     public void shouldRest(){
-        Pokemon gyarados = new Pokemon("Gyarados", 100, "Water");
+        Pokemon gyarados = new Pokemon("Gyarados", 100, Type.WATER);
         gyarados.learnSkill("OP Hyper Beam", 100, 10); //Cheap EC so gyrados doesnt need to rest.
         gyarados.rest();
         assertEquals(100, gyarados.getCurrentHP());
 
-        Pokemon wigglytuff = new Pokemon("Wigglytuff", 120, "Normal");
+        Pokemon wigglytuff = new Pokemon("Wigglytuff", 120, Type.NORMAL");
         assertEquals(120, wigglytuff.getCurrentHP());
         wigglytuff.rest();
         assertEquals(120, wigglytuff.getCurrentHP());
@@ -51,10 +52,10 @@ public class Task3Test {
 
     @Test
     public void shouldNotRestFainted(){
-        Pokemon gyarados = new Pokemon("Gyarados", 100, "Water");
+        Pokemon gyarados = new Pokemon("Gyarados", 100, Type.WATER);
         gyarados.learnSkill("OP Hyper Beam", 100, 10); //Cheap EC so gyrados doesnt need to rest.
 
-        Pokemon wigglytuff = new Pokemon("Wigglytuff", 120, "Normal");
+        Pokemon wigglytuff = new Pokemon("Wigglytuff", 120, Type.NORMAL);
         assertEquals(120, wigglytuff.getCurrentHP());
 
         // attack twice to make wigglytuff faint.
@@ -67,9 +68,9 @@ public class Task3Test {
 
     @Test
     public void shouldSpendAndRecoverEP(){
-        Pokemon rattata = new Pokemon("Rattata", 65, "Normal");
+        Pokemon rattata = new Pokemon("Rattata", 65, Type.NORMAL);
 
-        Pokemon squirtle = new Pokemon("Squirtle", 100, "Water");
+        Pokemon squirtle = new Pokemon("Squirtle", 100, Type.WATER);
         squirtle.learnSkill("Acqua Pulse", 30, 28);
         assertEquals(100, squirtle.getEnergy());
 
@@ -90,8 +91,8 @@ public class Task3Test {
 
     @Test
     public void shouldNeverExceedEPLimit(){
-        Pokemon meowth = new Pokemon("Meowth", 75, "Normal");
-        Pokemon shellder = new Pokemon("Shellder", 100, "Water");
+        Pokemon meowth = new Pokemon("Meowth", 75, Type.NORMAL);
+        Pokemon shellder = new Pokemon("Shellder", 100, Type.WATER);
         shellder.learnSkill("Bubblebeam", 40, 15);
         assertEquals(100, shellder.getEnergy());
 
@@ -103,8 +104,8 @@ public class Task3Test {
 
     @Test
     public void shouldNotExceedMaxHP(){
-        Pokemon meowth = new Pokemon("Meowth", 75, "Normal");
-        Pokemon shellder = new Pokemon("Shellder", 100, "Water");
+        Pokemon meowth = new Pokemon("Meowth", 75, Type.NORMAL);
+        Pokemon shellder = new Pokemon("Shellder", 100, Type.WATER);
         shellder.learnSkill("Water gun", 30, 15);
 
         shellder.attack(meowth); // 75 - 30 = 45
