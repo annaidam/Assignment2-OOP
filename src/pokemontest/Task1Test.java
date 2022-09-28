@@ -1,5 +1,7 @@
 package pokemontest;
 
+import assignment2.Pokemon;
+import assignment2.Type;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -17,7 +19,7 @@ public class Task1Test {
         assertEquals(100, charmander.getMAX_HP());
         assertEquals(charmander.getCurrentHP(), charmander.getMAX_HP());
 
-        Pokemon squirtle = new Pokemon("Squirtle", 120, "Water");
+        Pokemon squirtle = new Pokemon("Squirtle", 120, Type.WATER);
         assertEquals(100, squirtle.getEnergy());
         assertEquals(120, squirtle.getCurrentHP());
         assertEquals("Squirtle", squirtle.getName());
