@@ -172,7 +172,7 @@ public class Pokemon {
             System.out.println("Attack failed. " + targetPokemon.getName() + " fainted.");
         } else if (this.pokemonSkill == null) {
             System.out.println("Attack failed. " + getName() + "does not know a skill.");
-        } else if (this.pokemonSkill != null && this.EP < this.pokemonSkill.getEnergyCost()) {
+        } else if (this.EP < this.pokemonSkill.getEnergyCost()) {
             System.out.println("Attack failed. " + getName() + "lacks energy:" + getEnergy()/pokemonSkill.getEnergyCost());
         } else {
             if ((this.getType() == Type.WATER && targetPokemon.getType() == Type.FIRE)
@@ -191,7 +191,7 @@ public class Pokemon {
                 System.out.println(getName() + " uses " + this.pokemonSkill.getSkillName() + " on " + targetPokemon.getName() +
                         ".\n" + targetPokemon.getName() + " has " + targetPokemon.getCurrentHP() + " HP left.");
             }
-            if (targetPokemon.hasFainted = true) {
+            if (targetPokemon.hasFainted) {
                 System.out.println(targetPokemon.getName() + "faints.");
             }
         }
