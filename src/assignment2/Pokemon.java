@@ -7,14 +7,14 @@ public class Pokemon {
     public int MAX_HP;
     private int currentHP;
     private int EP;
-    public Type pokemonType;
+    public String pokemonType;
     public Skill pokemonSkill;
     private boolean hasFainted = true;
     private boolean knowsSkill = false;
 
     public Pokemon targetPokemon;
 //empty comment
-    public Pokemon(String name, int MAX_HP, Type pokemonType) {
+    public Pokemon(String name, int MAX_HP, String pokemonType) {
         this.name = name;
         this.MAX_HP = MAX_HP;
         this.EP = MAX_HP;
@@ -45,7 +45,7 @@ public class Pokemon {
         return this.name;
     }
 
-    public Type getType() {
+    public String getType() {
         return this.pokemonType;
     }
 
