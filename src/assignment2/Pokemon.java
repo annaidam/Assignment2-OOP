@@ -177,6 +177,15 @@ public class Pokemon {
                     }
                 }
             }
+        /*<opt_effect>: shows only if the attack is not effective or if it’s super effective. If
+        type does not affect the damage, then nothing is printed.
+        ● "It is super effective!"
+        ● “It is not very effective...”
+        <opt_effect>: shows only if the target pokemon faints as a result of the attack.
+        ● “<target> faints.”*/
+        } else {
+            System.out.println(getName() + " uses " + this.pokemonSkill.getSkillName() + " on " + targetPokemon.getName() +
+                    ". <opt_effect>" + targetPokemon.getName() + " has " + targetPokemon.getCurrentHP() + " HP left. <opt_faints>");
         }
     }
 }
