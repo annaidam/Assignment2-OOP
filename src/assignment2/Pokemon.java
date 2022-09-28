@@ -29,7 +29,7 @@ public class Pokemon {
     private boolean knowsSkill = false;
 
     public Pokemon targetPokemon;
-
+//empty comment
     public Pokemon(String name, int MAX_HP, Type pokemonType) {
         this.name = name;
         this.MAX_HP = MAX_HP;
