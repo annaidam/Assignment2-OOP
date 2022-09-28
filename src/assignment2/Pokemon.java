@@ -177,15 +177,26 @@ public class Pokemon {
                     }
                 }
             }
-        /*<opt_effect>: shows only if the attack is not effective or if it’s super effective. If
-        type does not affect the damage, then nothing is printed.
-        ● "It is super effective!"
-        ● “It is not very effective...”
-        <opt_effect>: shows only if the target pokemon faints as a result of the attack.
-        ● “<target> faints.”*/
         } else {
-            System.out.println(getName() + " uses " + this.pokemonSkill.getSkillName() + " on " + targetPokemon.getName() +
-                    ". <opt_effect>" + targetPokemon.getName() + " has " + targetPokemon.getCurrentHP() + " HP left. <opt_faints>");
+            if ((this.getType() == Type.WATER && targetPokemon.getType() == Type.FIRE)
+            | (this.getType() == Type.FIRE && targetPokemon.getType() == Type.GRASS)
+            | (this.getType() == Type.GRASS && targetPokemon.getType() == Type.WATER)){
+                receiveDamage(this.pokemonSkill.getAttackPower() * 2);
+                System.out.println(getName() + " uses " + this.pokemonSkill.getSkillName() + " on " + targetPokemon.getName() +
+                        ". It is super effective!\n" + targetPokemon.getName() + " has " + targetPokemon.getCurrentHP() + " HP left.");
+            } else if ((targetPokemon.getType() == Type.WATER && this.getType() == Type.GRASS | this.getType() == Type.WATER)
+            | (targetPokemon.getType() == Type.FIRE && this.getType() == Type.WATER | this.getType() == Type.FIRE)
+            | (targetPokemon.getType() == Type.GRASS && this.getType() == Type.GRASS | this.getType() == Type.FIRE)) {
+                receiveDamage(this.pokemonSkill.getAttackPower() * (1/2));
+                System.out.println(getName() + " uses " + this.pokemonSkill.getSkillName() + " on " + targetPokemon.getName() +
+                        ". It is not very effective...\n" + targetPokemon.getName() + " has " + targetPokemon.getCurrentHP() + " HP left.");
+            } else {
+                System.out.println(getName() + " uses " + this.pokemonSkill.getSkillName() + " on " + targetPokemon.getName() +
+                        ".\n" + targetPokemon.getName() + " has " + targetPokemon.getCurrentHP() + " HP left.");
+            }
+            if (targetPokemon.hasFainted = true) {
+                System.out.println(targetPokemon.getName() + "faints.");
+            }
         }
     }
 }
