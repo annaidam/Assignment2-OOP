@@ -184,7 +184,7 @@ public class Pokemon {
             } else if ((targetPokemon.getType() == Type.WATER && this.getType() == Type.GRASS | this.getType() == Type.WATER)
             | (targetPokemon.getType() == Type.FIRE && this.getType() == Type.WATER | this.getType() == Type.FIRE)
             | (targetPokemon.getType() == Type.GRASS && this.getType() == Type.GRASS | this.getType() == Type.FIRE)) {
-                receiveDamage(this.pokemonSkill.getAttackPower() * 0.5);
+                receiveDamage((this.pokemonSkill.getAttackPower() * 0.5)%2f);
                 System.out.println(getName() + " uses " + this.pokemonSkill.getSkillName() + " on " + targetPokemon.getName() +
                         ". It is not very effective...\n" + targetPokemon.getName() + " has " + targetPokemon.getCurrentHP() + " HP left.");
             } else {
