@@ -162,10 +162,9 @@ public class Pokemon {
         if (currentHP > MAX_HP)
             currentHP = MAX_HP;
     }
-
+//Task 5
     public void attack(Pokemon targetPokemon) {
         this.targetPokemon = targetPokemon;
-
 
         if (this.hasFainted) {
             System.out.println("Attack failed. " + getName() + " fainted.");
@@ -174,6 +173,7 @@ public class Pokemon {
                 if (this.pokemonSkill == null) {
                     System.out.println("Attack failed. " + getName() + "does not know a skill.");
                     if (this.pokemonSkill != null && this.EP < this.pokemonSkill.getEnergyCost()) {
+                        System.out.println("Attack failed. " + getName() + "lacks energy:" + getEnergy()/pokemonSkill.getEnergyCost());
                     }
                 }
             }
