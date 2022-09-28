@@ -53,7 +53,7 @@ public class Pokemon {
         return this.EP;
     }
 
-    public int getCurrentHP() {
+    public int getHP() {
         return this.currentHP;
     }
 
@@ -189,16 +189,16 @@ public class Pokemon {
             | (this.getType() == Type.GRASS && targetPokemon.getType() == Type.WATER)){
                 receiveDamage(this.pokemonSkill.getAttackPower() * 2);
                 System.out.println(getName() + " uses " + this.pokemonSkill.getSkillName() + " on " + targetPokemon.getName() +
-                        ". It is super effective!\n" + targetPokemon.getName() + " has " + targetPokemon.getCurrentHP() + " HP left.");
+                        ". It is super effective!\n" + targetPokemon.getName() + " has " + targetPokemon.getHP() + " HP left.");
             } else if ((targetPokemon.getType() == Type.WATER && this.getType() == Type.GRASS | this.getType() == Type.WATER)
             | (targetPokemon.getType() == Type.FIRE && this.getType() == Type.WATER | this.getType() == Type.FIRE)
             | (targetPokemon.getType() == Type.GRASS && this.getType() == Type.GRASS | this.getType() == Type.FIRE)) {
                 receiveDamage((this.pokemonSkill.getAttackPower() * 0.5)%2f);
                 System.out.println(getName() + " uses " + this.pokemonSkill.getSkillName() + " on " + targetPokemon.getName() +
-                        ". It is not very effective...\n" + targetPokemon.getName() + " has " + targetPokemon.getCurrentHP() + " HP left.");
+                        ". It is not very effective...\n" + targetPokemon.getName() + " has " + targetPokemon.getHP() + " HP left.");
             } else {
                 System.out.println(getName() + " uses " + this.pokemonSkill.getSkillName() + " on " + targetPokemon.getName() +
-                        ".\n" + targetPokemon.getName() + " has " + targetPokemon.getCurrentHP() + " HP left.");
+                        ".\n" + targetPokemon.getName() + " has " + targetPokemon.getHP() + " HP left.");
             }
             if (targetPokemon.hasFainted) {
                 System.out.println(targetPokemon.getName() + "faints.");
