@@ -53,7 +53,7 @@ public class Pokemon {
         return this.EP;
     }
 
-    public int getHP() {
+    public int getCurrentHP() {
         return this.currentHP;
     }
 
@@ -116,9 +116,9 @@ public class Pokemon {
     }*/
 
     public boolean knowsSkill() {
-        if (this.pokemonSkill != null) {
+        if (this.pokemonSkill != null)
             this.knowsSkill = true;
-        } else {
+    } else {
             this.knowsSkill = false;
         }
         return knowsSkill;
