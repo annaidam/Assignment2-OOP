@@ -27,6 +27,8 @@ public class Pokemon {
     public Skill pokemonSkill;
     private boolean hasFainted = true;
 
+    public Pokemon targetPokemon;
+
     public Pokemon(String name, int MAX_HP, Type pokemonType) {
         this.name = name;
         this.MAX_HP = MAX_HP;
