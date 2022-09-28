@@ -159,10 +159,10 @@ public class Pokemon {
             if(this.hasFainted) {
                 System.out.println("Attack failed. "+  getName() + " fainted.");
                 if(this.targetPokemon.hasFainted) {
-                    System.out.println("Attack failed. "+  getName(targetPokemon) + " fainted.");
+                    System.out.println("Attack failed. "+  getName() + " fainted.");
                     if (this.pokemonSkill == null) {
                         System.out.println("Attack failed. "+  getName() + "does not know a skill.");
-                        if (this.pokemonSkill != null && ) {
+                        if (this.pokemonSkill != null && this.EP<this.pokemonSkill.getEnergyCost()) {
                         }
                     }
                 }
