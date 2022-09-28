@@ -79,11 +79,11 @@ public class Pokemon {
     }
 
     public String toString() {
-        if (!knowsSkill()) {
-            String pokemon = " " + this.getName() + " (" + this.getType() + ")";
+        if (!this.knowsSkill()) {
+            String pokemon = this.getName() + " (" + this.getType() + ")";
             return pokemon;
         } else {
-            String pokemon = " " + this.getName() + " (" + this.getType() + "). Knows" + pokemonSkill;
+            String pokemon = this.getName() + " (" + this.getType() + "). Knows" + pokemonSkill;
             return pokemon;
         }
     }
