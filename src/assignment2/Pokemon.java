@@ -118,7 +118,7 @@ public class Pokemon {
     public boolean knowsSkill() {
         if (this.pokemonSkill != null)
             this.knowsSkill = true;
-    } else {
+     else {
             this.knowsSkill = false;
         }
         return knowsSkill;

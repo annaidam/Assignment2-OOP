@@ -37,7 +37,7 @@ public class Task3Test {
         gyarados.rest();
         assertEquals(100, gyarados.getCurrentHP());
 
-        Pokemon wigglytuff = new Pokemon("Wigglytuff", 120, Type.NORMAL");
+        Pokemon wigglytuff = new Pokemon("Wigglytuff", 120, Type.NORMAL);
         assertEquals(120, wigglytuff.getCurrentHP());
         wigglytuff.rest();
         assertEquals(120, wigglytuff.getCurrentHP());
