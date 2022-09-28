@@ -14,8 +14,8 @@ public class Task1Test {
         assertEquals(100, charmander.getEnergy());
         assertEquals(100, charmander.getCurrentHP());
         assertEquals("Charmander", charmander.getName());
-        assertEquals("Fire", charmander.getType());
-        assertEquals("Charmander (Fire)", charmander.toString());
+        assertEquals("FIRE", charmander.getType());
+        assertEquals("Charmander (FIRE)", charmander.toString());
         assertEquals(100, charmander.getMAX_HP());
         assertEquals(charmander.getCurrentHP(), charmander.getMAX_HP());
 
@@ -23,8 +23,8 @@ public class Task1Test {
         assertEquals(100, squirtle.getEnergy());
         assertEquals(120, squirtle.getCurrentHP());
         assertEquals("Squirtle", squirtle.getName());
-        assertEquals("Water", squirtle.getType());
-        assertEquals("Squirtle (Water)", squirtle.toString());
+        assertEquals("WATER", squirtle.getType());
+        assertEquals("Squirtle (WATER)", squirtle.toString());
         assertEquals(120, squirtle.getMAX_HP());
         assertEquals(squirtle.getCurrentHP(), squirtle.getMAX_HP());
     }
