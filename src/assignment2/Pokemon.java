@@ -13,6 +13,7 @@ public class Pokemon {
     private boolean knowsSkill = false;
 
     public Pokemon targetPokemon;
+    public Pokemon attackerPokemon;
 
     public Pokemon(String name, int MAX_HP, String pokemonType) {
         this.name = name;
@@ -181,18 +182,18 @@ public class Pokemon {
     public String attack(Pokemon targetPokemon) {
         this.targetPokemon = targetPokemon;
         String message;
-        if (hasFainted) {
-            message = "Attack failed. " + getName() + " fainted.";
+        if (this.hasFainted) {
+            message = "Attack failed. " + this.getName() + " fainted.";
         } else if (targetPokemon.hasFainted) {
             message = "Attack failed. " + targetPokemon.getName() + " fainted.";
-        } else if (pokemonSkill == null) {
-            message = "Attack failed. " + getName() + " does not know a skill.";
-        } else if (EP < pokemonSkill.getEnergyCost()) {
-            message = "Attack failed. " + getName() + " lacks energy: " + getEnergy() + " / " + pokemonSkill.getEnergyCost();
+        } else if (this.pokemonSkill == null) {
+            message = "Attack failed. " + this.getName() + " does not know a skill.";
+        } else if (this.EP < this.pokemonSkill.getEnergyCost()) {
+            message = "Attack failed. " + this.getName() + " lacks energy: " + this.getEnergy() + " / " + this.pokemonSkill.getEnergyCost();
         } else {
-            targetPokemon.receiveDamage(pokemonSkill.getAttackPower());
+            targetPokemon.receiveDamage(this.pokemonSkill.getAttackPower());
             //check attacker's type and target's type
-            message = getName() + " uses " + pokemonSkill.getSkillName() + " on " + targetPokemon.getName() +
+            message = this.getName() + " uses " + this.pokemonSkill.getSkillName() + " on " + targetPokemon.getName() +
                     ".\n" + targetPokemon.getName() + " has " + targetPokemon.getCurrentHP() + " HP left.";
             if (targetPokemon.hasFainted) {
                 message = targetPokemon.getName() + " faints.";
