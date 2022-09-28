@@ -133,13 +133,19 @@ public class Pokemon {
     }
     //A pokemon uses EP during battle
     //However, a pokemon can recover energy where a fixed amount of 25 EP is restored.
-    // Restoring energy has no effect on a pokemon that has fainted.
+    //Restoring energy has no effect on a pokemon that has fainted.
 
     public void recoverEnergy() {
         //If pokemon has not fainted
         if (!this.hasFainted) {
             this.EP += 25;
         }
+    }
+
+    public void useItem(Item item) {
+        currentHP += item.getHealing_power();
+        if(currentHP > MAX_HP)
+            currentHP = MAX_HP;
     }
 
     public void attack(){

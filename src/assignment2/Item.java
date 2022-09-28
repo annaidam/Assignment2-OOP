@@ -14,22 +14,22 @@ public class Item {
         this.weight = weight;
     }
 
-    String getName()
+    public String getName()
     {
         return name;
     }
 
-    int getHealing_power()
+    public int getHealing_power()
     {
         return healing_power;
     }
 
-    double getWeight()
+    public double getWeight()
     {
         return weight;
     }
 
-    void printItem()
+    public void printItem()
     {
         System.out.printf("\n %s heals %d HP. (%.2f)",name, healing_power, weight);
     }
