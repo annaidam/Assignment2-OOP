@@ -79,13 +79,13 @@ public class Pokemon {
     }
 
     public String toString() {
+        String pokemon = "";
         if (!this.knowsSkill()) {
-            String pokemon = this.getName() + " (" + this.getType() + ")";
-            return pokemon;
+            pokemon = this.getName() + " (" + this.getType() + ")";
         } else {
-            String pokemon = this.getName() + " (" + this.getType() + "). Knows" + pokemonSkill;
-            return pokemon;
+            pokemon = this.getName() + " (" + this.getType() + "). Knows" + pokemonSkill;
         }
+        return pokemon;
     }
 
     //3.1 - Learn and Forget Skills:
