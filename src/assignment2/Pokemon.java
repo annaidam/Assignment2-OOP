@@ -62,12 +62,15 @@ public class Pokemon {
         } else if (anotherPokemon instanceof Pokemon) {
             Pokemon otherPokemon = (Pokemon) anotherPokemon;
             if ((this.name.equals(otherPokemon.name)) &&
-                    (this.pokemonType.equals(otherPokemon.pokemonType)) &&
-                    (this.pokemonSkill.equals(otherPokemon.pokemonSkill)) &&
+                    (this.pokemonType.equals(otherPokemon.pokemonType))  &&
                     (this.currentHP == otherPokemon.currentHP) &&
                     (this.MAX_HP == otherPokemon.MAX_HP) &&
                     (this.EP == otherPokemon.EP)) {
-                return true;
+                if (this.knowsSkill && this.pokemonSkill.equals(otherPokemon.pokemonSkill)) {
+                    return true;
+                } else {
+                    return false;
+                }
             } else {
                 return false;
             }
