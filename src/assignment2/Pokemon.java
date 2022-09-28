@@ -189,11 +189,12 @@ public class Pokemon {
         } else if (this.EP < this.pokemonSkill.getEnergyCost()) {
             message = "Attack failed. " + this.getName() + "lacks energy:" + this.getEnergy() + " / " + pokemonSkill.getEnergyCost();
         } else {
+            targetPokemon.receiveDamage(this.pokemonSkill.getAttackPower());
             message = this.getName() + " uses " + this.pokemonSkill.getSkillName() + " on " + targetPokemon.getName() +
                     ".\n" + targetPokemon.getName() + " has " + targetPokemon.getCurrentHP() + " HP left.";
-        }
-        if (targetPokemon.hasFainted) {
-            message = targetPokemon.getName() + "faints.";
+            if (targetPokemon.hasFainted) {
+                message = targetPokemon.getName() + "faints.";
+            }
         }
         return message;
     }
