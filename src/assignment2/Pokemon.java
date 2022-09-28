@@ -166,10 +166,19 @@ public class Pokemon {
         }
     }
 
+    /*: If the pokemon has full HP before using the item:
+    “<poke name> could not use <item name>. HP is already full.”
+    2: If the pokemon recovers health when using the item:
+    “<poke name> used <item name>. It healed <amount healed> HP.”*/
     public void useItem(Item item) {
-        currentHP += item.getHealing_power();
-        if (currentHP > MAX_HP)
-            currentHP = MAX_HP;
+        if (this.getCurrentHP() == this.getMAX_HP()) {
+            System.out.println(this.getName() + " could not use " + item.getItemName() + ". HP is already full.");
+        } else {
+            currentHP += item.getHealing_power();
+            if (currentHP > MAX_HP) {
+                currentHP = MAX_HP;
+            }
+        }
     }
     //Task 5
     public void attack(Pokemon targetPokemon) {
