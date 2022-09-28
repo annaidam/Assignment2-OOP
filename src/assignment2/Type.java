@@ -14,16 +14,8 @@ package assignment2;
     pokemon and the types, i.e., avoid coupling Pokemon and the type calculations.*/
 
 public enum Type {
-    WATER (2, 0.5),
-    FIRE (2, 0.5),
-    GRASS (2, 0.5),
-    NORMAL (2, 0.5);
-
-    Type superEffective;
-    Type notVeryEffective;
-
-    Type(int superEffective, double notVeryEffective) {
-        this.superEffective = superEffective;
-        this.notVeryEffective = notVeryEffective;
-    }
+    WATER,
+    FIRE,
+    GRASS,
+    NORMAL;
 }
