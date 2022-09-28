@@ -2,6 +2,7 @@ package pokemontest;
 
 import assignment2.Item;
 import assignment2.Pokemon;
+import assignment2.Type;
 import org.junit.jupiter.api.Test;
 
 import java.util.Locale;
@@ -29,9 +30,9 @@ public class Task6Test {
 
     @Test
     public void shouldUseItemOnPokemon(){
-        Pokemon venusaur = new Pokemon("Venusaur", 200, "Grass");
+        Pokemon venusaur = new Pokemon("Venusaur", 200, Type.GRASS);
         venusaur.learnSkill("Solar Beam", 100, 50);
-        Pokemon magikarp = new Pokemon("Magikarp", 50, "Water");
+        Pokemon magikarp = new Pokemon("Magikarp", 50, Type.WATER);
 
         venusaur.attack(magikarp);
         assertEquals(0, magikarp.getCurrentHP());
