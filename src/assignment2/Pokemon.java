@@ -70,12 +70,14 @@ public class Pokemon {
                     if (this.pokemonSkill.equals(otherPokemon.pokemonSkill)) {
                         return true;
                     }
+                } else if (!this.knowsSkill && !otherPokemon.knowsSkill) {
+                    return true;
                 }
             }
         } else {
             return false;
         }
-        return false;
+        return true;
     }
 
     public String toString() {
