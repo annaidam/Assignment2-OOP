@@ -6,7 +6,7 @@ public enum Type {
     GRASS("Grass"),
     NORMAL("Normal");
 
-  public  final String pokemonType;
+  public final String pokemonType;
 
     Type(String pokemonType) {
         this.pokemonType = pokemonType;
@@ -32,8 +32,7 @@ public enum Type {
         return damageValue;
     }
 
-    /*} else {
-            if ((this.getType().equals("Water") && targetPokemon.getType().equals("Fire"))
+    /*if ((this.getType().equals("Water") && targetPokemon.getType().equals("Fire"))
             | (this.getType().equals("Fire") && targetPokemon.getType().equals("Grass"))
             | (this.getType().equals("Grass") && targetPokemon.getType().equals("Water"))){
                 receiveDamage(this.pokemonSkill.getAttackPower() * 2);

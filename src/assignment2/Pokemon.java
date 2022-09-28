@@ -179,20 +179,20 @@ public class Pokemon {
     public String attack(Pokemon targetPokemon) {
         this.targetPokemon = targetPokemon;
         String message;
-        if (this.hasFainted) {
-            message = "Attack failed. " + this.getName() + " fainted.";
-        } else if (this.targetPokemon.hasFainted) {
+        if (hasFainted) {
+            message = "Attack failed. " + getName() + " fainted.";
+        } else if (targetPokemon.hasFainted) {
             message = "Attack failed. " + targetPokemon.getName() + " fainted.";
-        } else if (this.pokemonSkill == null) {
-            message = "Attack failed. " + this.getName() + "does not know a skill.";
-        } else if (this.EP < this.pokemonSkill.getEnergyCost()) {
-            message = "Attack failed. " + this.getName() + "lacks energy:" + this.getEnergy() + " / " + pokemonSkill.getEnergyCost();
+        } else if (pokemonSkill == null) {
+            message = "Attack failed. " + getName() + "does not know a skill.";
+        } else if (EP < pokemonSkill.getEnergyCost()) {
+            message = "Attack failed. " + getName() + "lacks energy:" + getEnergy() + " / " + pokemonSkill.getEnergyCost();
         } else {
-            targetPokemon.receiveDamage(this.pokemonSkill.getAttackPower());
-            message = this.getName() + " uses " + this.pokemonSkill.getSkillName() + " on " + targetPokemon.getName() +
+            targetPokemon.receiveDamage(pokemonSkill.getAttackPower());
+            message = getName() + " uses " + pokemonSkill.getSkillName() + " on " + targetPokemon.getName() +
                     ".\n" + targetPokemon.getName() + " has " + targetPokemon.getCurrentHP() + " HP left.";
             if (targetPokemon.hasFainted) {
-                message = targetPokemon.getName() + "faints.";
+                message = targetPokemon.getName() + " faints.";
             }
         }
         return message;
