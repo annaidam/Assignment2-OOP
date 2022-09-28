@@ -18,7 +18,7 @@ public class Task2Test {
         assertFalse(squirtle.knowsSkill()); // must be false upon creation.
         assertEquals("Squirtle (Water)", squirtle.toString());
     }
-
+//cast double to the integer
     @Test
     public void shouldLearnSkills(){
         Pokemon bulbasaur = new Pokemon("Bulbasaur", 150, "Grass");

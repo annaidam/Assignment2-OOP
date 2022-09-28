@@ -117,8 +117,8 @@ public class Pokemon {
         this.hasFainted = true;
     }
 
-    public void receiveDamage(double damageValue) {
-        this.currentHP -= damageValue;
+    public void receiveDamage(int damageValue) {
+        currentHP = this.currentHP-damageValue;
         if (this.currentHP <= 0) {
             this.currentHP = 0;
             if (!this.hasFainted) {
