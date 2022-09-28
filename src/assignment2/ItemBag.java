@@ -21,6 +21,7 @@ public class ItemBag {
 
     public double getCurrentBagWeight() {
         for (int i = 0; i < this.itemsInBag.size(); i++) {
+            //this.itemsInBag.getItemWeight(i);
             //etsi jokaisen itemin paino ja summaa ne
         }
         return this.currentBagWeight;
