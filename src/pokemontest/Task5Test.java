@@ -107,7 +107,7 @@ public class Task5Test {
         Pokemon vaporeon = new Pokemon("Vaporeon", 130, Type.WATER);
         vaporeon.learnSkill("Surf", 55, 30);
 
-        Pokemon victreebel = new Pokemon("Victreebel", 170, Type.GRASS");
+        Pokemon victreebel = new Pokemon("Victreebel", 170, Type.GRASS);
         victreebel.learnSkill("Razor leaf", 60, 30);
 
         assertEquals(resultArcanineAtt, arcanine.attack(vaporeon));
