@@ -5,7 +5,7 @@ public class Item {
     private int healing_power;
     private double weight;
 
-    Item(String name, int healing_power, double weight) {
+    public Item(String name, int healing_power, double weight) {
         this.healing_power = healing_power;
         this.name = name;
         this.weight = weight;
