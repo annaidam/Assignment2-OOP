@@ -75,6 +75,7 @@ public class Pokemon {
                 }
             }
         }
+        return false;
     }
 
     public String toString() {
