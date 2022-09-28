@@ -76,7 +76,7 @@ public class Pokemon {
     }
 
     public String toString() {
-        if (this.pokemonSkill == null) {
+        if (!knowsSkill()) {
             String pokemon = this.getName() + " (" + this.getType() + ")";
             return pokemon;
         } else {
