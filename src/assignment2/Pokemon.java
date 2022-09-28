@@ -99,7 +99,7 @@ public class Pokemon {
     }
 
     //3.1 - Learn and Forget Skills:
-    public void learnSkill(String name, int attackPower, int EC) {
+    public void learnSkill(String name, double attackPower, int EC) {
         this.pokemonSkill = new Skill(name, attackPower, EC);
     }
 
@@ -108,7 +108,7 @@ public class Pokemon {
     }
 
     //Ask a pokemon whether it currently knows a skill and if it does replace it with a new skill
-    public void knowsSkill(String name, int attackPower, int energyCost) {
+    public void knowsSkill(String name, double attackPower, int energyCost) {
         if (this.pokemonSkill != null) {
             this.pokemonSkill = new Skill(name, attackPower, energyCost);
         }
@@ -119,7 +119,7 @@ public class Pokemon {
         this.hasFainted = true;
     }
 
-    public void receiveDamage(int damageValue) {
+    public void receiveDamage(double damageValue) {
         this.currentHP -= damageValue;
         if (this.currentHP <= 0) {
             this.currentHP = 0;
@@ -180,11 +180,11 @@ public class Pokemon {
             | (this.getType() == Type.GRASS && targetPokemon.getType() == Type.WATER)){
                 receiveDamage(this.pokemonSkill.getAttackPower() * 2);
                 System.out.println(getName() + " uses " + this.pokemonSkill.getSkillName() + " on " + targetPokemon.getName() +
-                        ". It is super effective!\n" + getOptEffect() + targetPokemon.getName() + " has " + targetPokemon.getCurrentHP() + " HP left.");
+                        ". It is super effective!\n" + targetPokemon.getName() + " has " + targetPokemon.getCurrentHP() + " HP left.");
             } else if ((targetPokemon.getType() == Type.WATER && this.getType() == Type.GRASS | this.getType() == Type.WATER)
             | (targetPokemon.getType() == Type.FIRE && this.getType() == Type.WATER | this.getType() == Type.FIRE)
             | (targetPokemon.getType() == Type.GRASS && this.getType() == Type.GRASS | this.getType() == Type.FIRE)) {
-                receiveDamage(this.pokemonSkill.getAttackPower() * (1/2));
+                receiveDamage(this.pokemonSkill.getAttackPower() * 0.5);
                 System.out.println(getName() + " uses " + this.pokemonSkill.getSkillName() + " on " + targetPokemon.getName() +
                         ". It is not very effective...\n" + targetPokemon.getName() + " has " + targetPokemon.getCurrentHP() + " HP left.");
             } else {

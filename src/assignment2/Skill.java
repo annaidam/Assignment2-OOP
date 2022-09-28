@@ -9,7 +9,7 @@ public class Skill {
     private double attackPower;
     private int energyCost;
 
-    Skill(String name, int attackPower, int energyCost) {
+    Skill(String name, double attackPower, int energyCost) {
         this.name = name;
         this.attackPower = attackPower;
         this.energyCost = energyCost;
