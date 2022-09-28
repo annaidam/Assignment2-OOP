@@ -102,7 +102,8 @@ public class Pokemon {
             this.knowsSkill = true;
         } else {
             this.knowsSkill = false;
-            this.pokemonSkill = new Skill(name, pokemonSkill.getAttackPower(), pokemonSkill.getEnergyCost());
+            //learn a new skill
+            this.pokemonSkill = new Skill(pokemonSkill.getSkillName(), pokemonSkill.getAttackPower(), pokemonSkill.getEnergyCost());
         }
         return knowsSkill;
     }
