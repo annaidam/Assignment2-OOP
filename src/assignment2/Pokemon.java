@@ -168,15 +168,12 @@ public class Pokemon {
 
         if (this.hasFainted) {
             System.out.println("Attack failed. " + getName() + " fainted.");
-            if (this.targetPokemon.hasFainted) {
-                System.out.println("Attack failed. " + targetPokemon.getName() + " fainted.");
-                if (this.pokemonSkill == null) {
-                    System.out.println("Attack failed. " + getName() + "does not know a skill.");
-                    if (this.pokemonSkill != null && this.EP < this.pokemonSkill.getEnergyCost()) {
-                        System.out.println("Attack failed. " + getName() + "lacks energy:" + getEnergy()/pokemonSkill.getEnergyCost());
-                    }
-                }
-            }
+        } else if (this.targetPokemon.hasFainted) {
+            System.out.println("Attack failed. " + targetPokemon.getName() + " fainted.");
+        } else if (this.pokemonSkill == null) {
+            System.out.println("Attack failed. " + getName() + "does not know a skill.");
+        } else if (this.pokemonSkill != null && this.EP < this.pokemonSkill.getEnergyCost()) {
+            System.out.println("Attack failed. " + getName() + "lacks energy:" + getEnergy()/pokemonSkill.getEnergyCost());
         } else {
             if ((this.getType() == Type.WATER && targetPokemon.getType() == Type.FIRE)
             | (this.getType() == Type.FIRE && targetPokemon.getType() == Type.GRASS)
