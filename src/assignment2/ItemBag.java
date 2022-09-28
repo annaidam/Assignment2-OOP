@@ -21,18 +21,12 @@ public class ItemBag {
 
     public double getCurrentBagWeight() {
         for (int i = 0; i < this.itemsInBag.size(); i++) {
+            //etsi jokaisen itemin paino ja summaa ne
         }
         return this.currentBagWeight;
     }
 
     public double getMaxBagWeight() {return this.maxBagWeight;}
-
-    public ArrayList getItemsInBag() {
-        /*for (int i = 0; i < this.itemsInBag.size(); i++) {
-            itemsInBag.get(i);
-        }*/
-        return this.getItemsInBag();
-    }
 
     /*7.1 - Adding items to the bag:
     The collection of items can accept repeated items and the items are stored in a specific
@@ -49,6 +43,7 @@ public class ItemBag {
     public void addItems() {
         for (int i = 0; i < this.itemsInBag.size(); i++) {
             itemsInBag.add(i);
+            //sort the items by weight from lightest to heaviest
         }
     }
 
@@ -59,7 +54,8 @@ public class ItemBag {
     The bag should then return a reference to the removed item. In case the specified index is
     out of bounds, the method should return null.*/
     public void removeItems() {
-
+        //remove an item based on specified index
+        //automatically reorganise the items in the bag
     }
 
     /*7.3 - Peeking at items:
@@ -67,7 +63,8 @@ public class ItemBag {
     reference to the actual item. Instead, the bag returns a string representation of the item
     according to what has been specified in Task X.*/
     public void peekinAtItems() {
-
+        //check an item in a specific position (index)
+        //Printing String about the item
     }
 
     /*7.4 - Popping items:
@@ -75,6 +72,7 @@ public class ItemBag {
     and return a reference to its first item. Typically, this operation is named ‘pop’. If the bag is
     empty, popping should return null.*/
     public void poppingItems() {
-
+        //find the heaviest item in the bag ie. the first ite
+        //if bag is empty popping returns to null
     }
 }
