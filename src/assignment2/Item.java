@@ -1,14 +1,11 @@
 package assignment2;
 
 public class Item {
-    String name;
-    int healing_power;
-    double weight;
+    private String name;
+    private int healing_power;
+    private double weight;
 
-    public Item() {
-    }
-
-    public Item(String name, int healing_power, double weight) {
+    Item(String name, int healing_power, double weight) {
         this.healing_power = healing_power;
         this.name = name;
         this.weight = weight;

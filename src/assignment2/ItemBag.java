@@ -37,9 +37,29 @@ and return a reference to its first item. Typically, this operation is named ‘
 empty, popping should return null.*/
 
 public class ItemBag {
-    /*An item bag has a maximum weight
-    defined when creating the bag. The bag also stores a collection of items that begins empty
-    when creating the bag. The maximum weight cannot change once the bag is created. You
-    don’t need to write code to check if two bags are equal.*/
+    /*An item bag has a maximum weight defined when creating the bag.
+    The bag also stores a collection of items that begins empty
+    when creating the bag.
+    The maximum weight cannot change once the bag is created. You  don’t need to write code to check if two bags are equal.*/
     private double maxBagWeight;
+    private double attackPower;
+    private int energyCost;
+
+    Skill(String name, double attackPower, int energyCost) {
+        this.name = name;
+        this.attackPower = attackPower;
+        this.energyCost = energyCost;
+    }
+
+    public String getSkillName() {
+        return this.name;
+    }
+
+    public double getAttackPower() {
+        return this.attackPower;
+    }
+
+    public int getEnergyCost() {
+        return this.energyCost;
+    }
 }
