@@ -178,6 +178,8 @@ public class Pokemon {
             if (currentHP > MAX_HP) {
                 currentHP = MAX_HP;
             }
+            System.out.println(this.getName() + " used " + item.getItemName() + ". It healed "
+                    + (this.getCurrentHP() - item.getHealing_power()) + "HP.");
         }
     }
     //Task 5
