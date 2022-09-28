@@ -30,6 +30,7 @@ public class Pokemon {
         } else if (currentHP > MAX_HP) {
             currentHP = MAX_HP;
         }
+
         this.pokemonType = pokemonType;
     }
 
@@ -169,6 +170,7 @@ public class Pokemon {
         }
         return item;
     }
+
     //Task 5: Pokemon Battle
 
     //type calc not inside pokemon
@@ -184,9 +186,9 @@ public class Pokemon {
         } else if (targetPokemon.hasFainted) {
             message = "Attack failed. " + targetPokemon.getName() + " fainted.";
         } else if (pokemonSkill == null) {
-            message = "Attack failed. " + getName() + "does not know a skill.";
+            message = "Attack failed. " + getName() + " does not know a skill.";
         } else if (EP < pokemonSkill.getEnergyCost()) {
-            message = "Attack failed. " + getName() + "lacks energy:" + getEnergy() + " / " + pokemonSkill.getEnergyCost();
+            message = "Attack failed. " + getName() + " lacks energy: " + getEnergy() + " / " + pokemonSkill.getEnergyCost();
         } else {
             targetPokemon.receiveDamage(pokemonSkill.getAttackPower());
             //check attacker's type and target's type
