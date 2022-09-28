@@ -83,7 +83,7 @@ public class Pokemon {
         if (!this.knowsSkill()) {
             pokemon = this.getName() + " (" + this.getType() + ")";
         } else {
-            pokemon = this.getName() + " (" + this.getType() + "). Knows" + pokemonSkill;
+            pokemon = this.getName() + " (" + this.getType() + "). Knows " + pokemonSkill;
         }
         return pokemon;
     }
