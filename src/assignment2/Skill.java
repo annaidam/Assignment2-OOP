@@ -27,8 +27,7 @@ public class Skill {
         return this.energyCost;
     }
 
-    /*Two skills are equal if they have the same names, APs and energy costs. When printed, a skill
-    should return: “<skill name> - AP: <ap> EC: <ec>”.*/
+    //Two skills are equal if they have the same names, APs and energy costs.
     public boolean equals(Object anotherSkill) {
         if (anotherSkill == null) {
             return false;
@@ -44,6 +43,7 @@ public class Skill {
         }
     }
 
+    //When printed, a skill should return: “<skill name> - AP: <ap> EC: <ec>".
     public String toString() {
         String skill = this.getSkillName() + " - AP: " + this.getAttackPower() + " EC: " + this.getEnergyCost();
         return skill;
