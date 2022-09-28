@@ -36,30 +36,30 @@ A user can retrieve the heaviest item in the bag. This means that the bag should
 and return a reference to its first item. Typically, this operation is named ‘pop’. If the bag is
 empty, popping should return null.*/
 
+import java.util.ArrayList;
+
 public class ItemBag {
     /*An item bag has a maximum weight defined when creating the bag.
-    The bag also stores a collection of items that begins empty
-    when creating the bag.
-    The maximum weight cannot change once the bag is created. You  don’t need to write code to check if two bags are equal.*/
+    The bag also stores a collection of items that begins empty when creating the bag.
+    The maximum weight cannot change once the bag is created. You don’t need to write code to check if two bags are equal.*/
     private double maxBagWeight;
-    private double attackPower;
-    private int energyCost;
+    private ArrayList itemsInBag = new ArrayList();
 
-    Skill(String name, double attackPower, int energyCost) {
-        this.name = name;
-        this.attackPower = attackPower;
-        this.energyCost = energyCost;
+    ItemBag(double maxBagWeight, ArrayList itemsInBag) {
+        this.maxBagWeight = maxBagWeight;
+        this.itemsInBag = itemsInBag;
     }
 
-    public String getSkillName() {
-        return this.name;
+    /*The bag should provide: the current number of items stored, the current weight of the bag,
+    and its maximum weight. Other operations are defined below.*/
+    public double getCurrentBagWeight() {
+        return this.maxBagWeight;
     }
 
-    public double getAttackPower() {
-        return this.attackPower;
-    }
-
-    public int getEnergyCost() {
-        return this.energyCost;
+    public ArrayList getItemsInBag() {
+        /*for (int i = 0; i < this.itemsInBag.size(); i++) {
+            itemsInBag.get(i);
+        }*/
+        return this.getItemsInBag();
     }
 }
