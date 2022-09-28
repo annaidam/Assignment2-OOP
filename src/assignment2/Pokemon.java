@@ -168,6 +168,12 @@ public class Pokemon {
         return item;
     }
     //Task 5: Pokemon Battle
+
+    //type calc not inside pokemon
+    //only need type
+    //if type is this.... effective
+    //attack method calculate damage
+    //method receive damage
     public String attack(Pokemon targetPokemon) {
         this.targetPokemon = targetPokemon;
         String message;

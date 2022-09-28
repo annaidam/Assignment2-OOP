@@ -1,8 +1,6 @@
 package pokemontest;
 
-
 import assignment2.Pokemon;
-import assignment2.Type;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -11,9 +9,9 @@ public class Task4Test {
 
     @Test
     public void shouldBeSuperEffective(){
-        Pokemon starmie = new Pokemon("Starmie", 180, Type.WATER);
-        Pokemon vileplume = new Pokemon("Vileplume", 220, Type.GRASS);
-        Pokemon ninetales = new Pokemon("Ninetales", 155, Type.FIRE);
+        Pokemon starmie = new Pokemon("Starmie", 180, "Water");
+        Pokemon vileplume = new Pokemon("Vileplume", 220, "Grass");
+        Pokemon ninetales = new Pokemon("Ninetales", 155, "Fire");
 
         starmie.learnSkill("Surf", 55, 25);
         vileplume.learnSkill("Mega drain", 70, 40);
@@ -30,9 +28,9 @@ public class Task4Test {
 
     @Test
     public void shouldNotBeEffective(){
-        Pokemon starmie = new Pokemon("Starmie", 180, Type.WATER);
-        Pokemon vileplume = new Pokemon("Vileplume", 220, Type.GRASS);
-        Pokemon ninetales = new Pokemon("Ninetales", 155, Type.FIRE);
+        Pokemon starmie = new Pokemon("Starmie", 180, "Water");
+        Pokemon vileplume = new Pokemon("Vileplume", 220, "Grass");
+        Pokemon ninetales = new Pokemon("Ninetales", 155, "Fire");
 
         starmie.learnSkill("Surf", 55, 25);
         vileplume.learnSkill("Mega drain", 70, 40);
@@ -49,10 +47,10 @@ public class Task4Test {
 
     @Test
     public void shouldBeNormalDamage(){
-        Pokemon starmie = new Pokemon("Starmie", 180, Type.WATER);
-        Pokemon vileplume = new Pokemon("Vileplume", 220, Type.GRASS);
-        Pokemon ninetales = new Pokemon("Ninetales", 155, Type.FIRE);
-        Pokemon blissey = new Pokemon("Blissey", 500, Type.NORMAL);
+        Pokemon starmie = new Pokemon("Starmie", 180, "Water");
+        Pokemon vileplume = new Pokemon("Vileplume", 220, "Grass");
+        Pokemon ninetales = new Pokemon("Ninetales", 155, "Fire");
+        Pokemon blissey = new Pokemon("Blissey", 500, "Normal");
 
         starmie.learnSkill("Surf", 55, 25);
         vileplume.learnSkill("Mega drain", 70, 40);
@@ -79,10 +77,10 @@ public class Task4Test {
 
     @Test
     public void shouldNotGoBelowZero(){
-        Pokemon tangela = new Pokemon("Tangela", 160, Type.GRASS);
-        Pokemon starmie = new Pokemon("Starmie", 180, Type.WATER);
-        Pokemon vileplume = new Pokemon("Vileplume", 220, Type.GRASS);
-        Pokemon ninetales = new Pokemon("Ninetales", 155, Type.FIRE);
+        Pokemon tangela = new Pokemon("Tangela", 160, "Grass");
+        Pokemon starmie = new Pokemon("Starmie", 180, "Water");
+        Pokemon vileplume = new Pokemon("Vileplume", 220, "Grass");
+        Pokemon ninetales = new Pokemon("Ninetales", 155, "Fire");
 
         starmie.learnSkill("Hydro Pump", 110, 47);
         vileplume.learnSkill("Petal dance", 105, 40);

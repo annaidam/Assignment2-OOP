@@ -1,8 +1,6 @@
 package pokemontest;
 
-
 import assignment2.Pokemon;
-import assignment2.Type;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -21,10 +19,10 @@ public class Task5Test {
         String expectedWigglyAttack = "Wigglytuff uses Double slap on Porygon." + END_OF_LINE +
                 "Porygon has 45 HP left.";
 
-        Pokemon wigglytuff = new Pokemon("Wigglytuff",230,Type.NORMAL);
+        Pokemon wigglytuff = new Pokemon("Wigglytuff",230,"Normal");
         wigglytuff.learnSkill("Double slap", 75, 35);
 
-        Pokemon porygon = new Pokemon("Porygon", 120, Type.NORMAL);
+        Pokemon porygon = new Pokemon("Porygon", 120, "Normal");
         porygon.learnSkill("Hyper beam", 100, 50);
 
         assertEquals(expectedPoryAttack, porygon.attack(wigglytuff));
@@ -47,10 +45,10 @@ public class Task5Test {
         String expectedWigglyAttack = "Wigglytuff uses Slam on Porygon." + END_OF_LINE +
                 "Porygon has 60 HP left.";
 
-        Pokemon wigglytuff = new Pokemon("Wigglytuff",130,Type.NORMAL);
+        Pokemon wigglytuff = new Pokemon("Wigglytuff",130,"Normal");
         wigglytuff.learnSkill("Slam", 60, 35);
 
-        Pokemon porygon = new Pokemon("Porygon", 120, Type.NORMAL);
+        Pokemon porygon = new Pokemon("Porygon", 120, "Normal");
         porygon.learnSkill("Hyper beam", 100, 50);
 
         assertEquals(expectedPoryAttack, porygon.attack(wigglytuff));
@@ -69,13 +67,13 @@ public class Task5Test {
         String resultVictreeAtt = "Victreebel uses Razor leaf on Vaporeon. It is super effective!" + END_OF_LINE +
                 "Vaporeon has 10 HP left.";
 
-        Pokemon arcanine = new Pokemon("Arcanine",150,Type.FIRE);
+        Pokemon arcanine = new Pokemon("Arcanine",150,"Fire");
         arcanine.learnSkill("Flamethrower", 60, 25);
 
-        Pokemon vaporeon = new Pokemon("Vaporeon", 130, Type.WATER);
+        Pokemon vaporeon = new Pokemon("Vaporeon", 130, "Water");
         vaporeon.learnSkill("Surf", 55, 30);
 
-        Pokemon victreebel = new Pokemon("Victreebel", 170, Type.GRASS);
+        Pokemon victreebel = new Pokemon("Victreebel", 170, "Grass");
         victreebel.learnSkill("Razor leaf", 60, 30);
 
         assertEquals(resultArcanineAtt, arcanine.attack(victreebel));
@@ -101,13 +99,13 @@ public class Task5Test {
         String resultVictreeAtt = "Victreebel uses Razor leaf on Arcanine. It is not very effective..." + END_OF_LINE +
                 "Arcanine has 120 HP left.";
 
-        Pokemon arcanine = new Pokemon("Arcanine",150,Type.FIRE);
+        Pokemon arcanine = new Pokemon("Arcanine",150,"Fire");
         arcanine.learnSkill("Flamethrower", 60, 25);
 
-        Pokemon vaporeon = new Pokemon("Vaporeon", 130, Type.WATER);
+        Pokemon vaporeon = new Pokemon("Vaporeon", 130, "Water");
         vaporeon.learnSkill("Surf", 55, 30);
 
-        Pokemon victreebel = new Pokemon("Victreebel", 170, Type.GRASS);
+        Pokemon victreebel = new Pokemon("Victreebel", 170, "Grass");
         victreebel.learnSkill("Razor leaf", 60, 30);
 
         assertEquals(resultArcanineAtt, arcanine.attack(vaporeon));
@@ -117,7 +115,7 @@ public class Task5Test {
         String resultMagikarpFaint = "Arcanine uses Flamethrower on Magikarp. It is not very effective..." + END_OF_LINE +
                 "Magikarp has 0 HP left. Magikarp faints.";
 
-        Pokemon magikarp = new Pokemon("Magikarp", 25, Type.WATER);
+        Pokemon magikarp = new Pokemon("Magikarp", 25, "Water");
         assertEquals(resultMagikarpFaint,  arcanine.attack(magikarp));
     }
 
