@@ -61,23 +61,19 @@ public class Pokemon {
             return false;
         } else if (anotherPokemon instanceof Pokemon) {
             Pokemon otherPokemon = (Pokemon) anotherPokemon;
-            if ((this.name.equals(otherPokemon.name)) &&
-                    (this.pokemonType.equals(otherPokemon.pokemonType)) &&
-                    (this.currentHP == otherPokemon.currentHP) &&
-                    (this.MAX_HP == otherPokemon.MAX_HP) &&
-                    (this.EP == otherPokemon.EP)) {
-                if (this.knowsSkill && otherPokemon.knowsSkill) {
-                    if (this.pokemonSkill.equals(otherPokemon.pokemonSkill)) {
-                        return true;
-                    }
-                } else if (!this.knowsSkill && !otherPokemon.knowsSkill) {
+            if (!this.knowsSkill && !otherPokemon.knowsSkill) {
+                if ((this.name.equals(otherPokemon.name)) &&
+                        (this.pokemonType.equals(otherPokemon.pokemonType)) &&
+                        (this.currentHP == otherPokemon.currentHP) &&
+                        (this.MAX_HP == otherPokemon.MAX_HP) &&
+                        (this.EP == otherPokemon.EP)) {
+                    return true;
+                }
+            } else if (this.knowsSkill && otherPokemon.knowsSkill) {
+                if (this.pokemonSkill.equals(otherPokemon.pokemonSkill)) {
                     return true;
                 }
             }
-        } else {
-            return false;
-        }
-        return true;
     }
 
     public String toString() {
