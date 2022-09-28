@@ -21,7 +21,7 @@ public class Task5Test {
         String expectedWigglyAttack = "Wigglytuff uses Double slap on Porygon." + END_OF_LINE +
                 "Porygon has 45 HP left.";
 
-        Pokemon wigglytuff = new Pokemon("Wigglytuff",230,Type.NORMAL");
+        Pokemon wigglytuff = new Pokemon("Wigglytuff",230,Type.NORMAL);
         wigglytuff.learnSkill("Double slap", 75, 35);
 
         Pokemon porygon = new Pokemon("Porygon", 120, Type.NORMAL);
