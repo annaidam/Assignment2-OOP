@@ -26,6 +26,7 @@ public class Pokemon {
     public Type pokemonType;
     public Skill pokemonSkill;
     private boolean hasFainted = true;
+    private boolean knowsSkill = false;
 
     public Pokemon targetPokemon;
 
@@ -99,8 +100,8 @@ public class Pokemon {
     }
 
     //3.1 - Learn and Forget Skills:
-    public void learnSkill(String name, double attackPower, int EC) {
-        this.pokemonSkill = new Skill(name, attackPower, EC);
+    public void learnSkill(String name, double attackPower, int energyCost) {
+        this.pokemonSkill = new Skill(name, attackPower, energyCost);
     }
 
     public void forgetSkill() {
@@ -108,10 +109,19 @@ public class Pokemon {
     }
 
     //Ask a pokemon whether it currently knows a skill and if it does replace it with a new skill
-    public void knowsSkill(String name, double attackPower, int energyCost) {
+    /*public void knowsSkill(String name, double attackPower, int energyCost) {
         if (this.pokemonSkill != null) {
             this.pokemonSkill = new Skill(name, attackPower, energyCost);
         }
+    }*/
+
+    public boolean knowsSkill() {
+        if (this.pokemonSkill != null) {
+            this.knowsSkill = true;
+        } else {
+            this.knowsSkill = false;
+        }
+        return knowsSkill;
     }
 
     //3.2  - Receive Damage and Rest:
@@ -138,7 +148,6 @@ public class Pokemon {
             }
         }
     }
-
 
     //3.3 - Spend and Recover Energy Points:
     public void spendEP(int EC) {
