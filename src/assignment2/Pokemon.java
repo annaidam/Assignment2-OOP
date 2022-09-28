@@ -1,24 +1,6 @@
 package assignment2;
 
 public class Pokemon {
-    /*Each pokemon has a name, a maximum health points (MAX HP), energy points (EP), a
-    single skill (Task 2), and a type.
-
-    A pokemon can be one of four types: Fire, Water, Grass and
-    Normal. When created, the EP always starts at 100, and the pokemon does not know any
-    skill. On the other hand, the name, MAX HP and type must be specified.
-
-    Pokemon also have current health points (HP), which can change, but not their maximum
-    health points (MAX HP). In fact, a pokemon’s current HP cannot be less than zero, or
-    greater than its MAX HP. Similarly, EP can never be less than zero or greater than 100. When
-    creating a Pokemon, its current HP and current EP are the same value as their corresponding
-    maximum HP and EP. From now, we use HP to refer to the current HP and MAX HP to refer
-    to the maximum health points.
-
-    After creation, we can change the name of a pokemon but not its type or MAX HP. Also, we
-    cannot set its HP and EP to a specific value. HP and EP can only be changed as a
-    consequence of battling (details in Tasks below).*/
-
     public String name;
     public int MAX_HP;
     private int currentHP;
@@ -29,7 +11,7 @@ public class Pokemon {
     private boolean knowsSkill = false;
 
     public Pokemon targetPokemon;
-
+//empty comment
     public Pokemon(String name, int MAX_HP, Type pokemonType) {
         this.name = name;
         this.MAX_HP = MAX_HP;
@@ -124,10 +106,9 @@ public class Pokemon {
         }
         return knowsSkill;
     }
-//In Java, you must declare a method of the boolean type in order for it to return a boolean value.
-// The boolean method will return the boolean value, true or false.
-// You can either return the variable containing a boolean value or
-// use conditional statements to decide the returned value.
+    //In Java, you must declare a method of the boolean type in order for it to return a boolean value.
+    //The boolean method will return the boolean value, true or false.
+    //You can either return the variable containing a boolean value or use conditional statements to decide the returned value.
 
     //3.2  - Receive Damage and Rest:
     public void hasFainted() {
@@ -188,7 +169,7 @@ public class Pokemon {
         }
         return item;
     }
-    //Task 5
+    //Task 5: Pokemon Battle
     public void attack(Pokemon targetPokemon) {
         this.targetPokemon = targetPokemon;
 
@@ -223,29 +204,3 @@ public class Pokemon {
         }
     }
 }
-    //Task 5: Pokemon Battle
-    //
-    //Pokemon compete with each other in battles.
-    // Each pokemon can attack another pokemon.
-    // An attack can have different outcomes.
-    // Be mindful to distinguish between the attacker and the defender (i.e., target) pokemon.
-    //
-
-
-
-//The attacking pokemon should return a message that describes the outcome of the attack.
-// The message changes depending on which one of the cases below trigger:
-//
-//1: If the attacking pokemon is fainted, the message should be:
-//"Attack failed. <attacker> fainted."
-//
-//2: If the target pokemon is fainted, the message should be:
-//"Attack failed. <target> fainted."
-//
-//3: If the attacking pokemon does not know a skill, the message should be:
-//"Attack failed. <attacker> does not know a skill."
-//
-//4: If the attacker knows a skill and has less energy points than the cost of the skill (ec):
-//"Attack failed. <attacker> lacks energy: <ep>/<ec>"
-//
-//5: If the attacker has enough EP to use the assignment2.Skill, then the attack is successful.
