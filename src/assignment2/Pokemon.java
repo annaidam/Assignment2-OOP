@@ -162,13 +162,7 @@ public class Pokemon {
         if (currentHP > MAX_HP)
             currentHP = MAX_HP;
     }
-//Task 5
-
-    public String getOptEffect(){
-        String optEffect = "It is super effective!\n";
-        return optEffect;
-    }
-
+    //Task 5
     public void attack(Pokemon targetPokemon) {
         this.targetPokemon = targetPokemon;
 
@@ -186,7 +180,7 @@ public class Pokemon {
             | (this.getType() == Type.GRASS && targetPokemon.getType() == Type.WATER)){
                 receiveDamage(this.pokemonSkill.getAttackPower() * 2);
                 System.out.println(getName() + " uses " + this.pokemonSkill.getSkillName() + " on " + targetPokemon.getName() +
-                        "." + getOptEffect() + targetPokemon.getName() + " has " + targetPokemon.getCurrentHP() + " HP left.");
+                        ". It is super effective!\n" + getOptEffect() + targetPokemon.getName() + " has " + targetPokemon.getCurrentHP() + " HP left.");
             } else if ((targetPokemon.getType() == Type.WATER && this.getType() == Type.GRASS | this.getType() == Type.WATER)
             | (targetPokemon.getType() == Type.FIRE && this.getType() == Type.WATER | this.getType() == Type.FIRE)
             | (targetPokemon.getType() == Type.GRASS && this.getType() == Type.GRASS | this.getType() == Type.FIRE)) {
