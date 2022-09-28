@@ -1,6 +1,7 @@
 package pokemontest;
 
 import assignment2.Pokemon;
+import assignment2.Type;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -9,18 +10,18 @@ public class Task2Test {
 
     @Test
     public void shouldNotKnowSkills(){
-        Pokemon charmander = new Pokemon("Charmander", 100, "Fire");
+        Pokemon charmander = new Pokemon("Charmander", 100, Type.FIRE);
         assertFalse(charmander.knowsSkill()); // must be false upon creation.
         assertEquals("Charmander (Fire)", charmander.toString());
 
-        Pokemon squirtle = new Pokemon("Squirtle", 120, "Water");
+        Pokemon squirtle = new Pokemon("Squirtle", 120, Type.WATER);
         assertFalse(squirtle.knowsSkill()); // must be false upon creation.
         assertEquals("Squirtle (Water)", squirtle.toString());
     }
 
     @Test
     public void shouldLearnSkills(){
-        Pokemon bulbasaur = new Pokemon("Bulbasaur", 150, "Grass");
+        Pokemon bulbasaur = new Pokemon("Bulbasaur", 150, Type.GRASS);
         assertFalse(bulbasaur.knowsSkill()); // must be false upon creation.
         assertEquals("Bulbasaur (Grass)", bulbasaur.toString());
 
@@ -28,7 +29,7 @@ public class Task2Test {
         assertTrue(bulbasaur.knowsSkill());
         assertEquals("Bulbasaur (Grass). Knows Razor Leaf - AP: 20 EC: 15", bulbasaur.toString());
 
-        Pokemon starmie = new Pokemon("Starmie", 80, "Water");
+        Pokemon starmie = new Pokemon("Starmie", 80, Type.WATER);
         assertFalse(starmie.knowsSkill());
         assertEquals("Starmie (Water)", starmie.toString());
         starmie.learnSkill("Surf", 40, 35);
@@ -38,7 +39,7 @@ public class Task2Test {
 
     @Test
     public void shouldForgetSkill(){
-        Pokemon oddish = new Pokemon("Oddish", 60, "Grass");
+        Pokemon oddish = new Pokemon("Oddish", 60, Type.GRASS);
         assertFalse(oddish.knowsSkill());
         oddish.learnSkill("Mega Drain", 30, 20);
         assertTrue(oddish.knowsSkill());
