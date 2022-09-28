@@ -6,7 +6,7 @@ public enum Type {
     GRASS("Grass"),
     NORMAL("Normal");
 
-    final String pokemonType;
+  public  final String pokemonType;
 
     Type(String pokemonType) {
         this.pokemonType = pokemonType;
