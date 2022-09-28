@@ -12,16 +12,23 @@ public enum Type {
         this.pokemonType = pokemonType;
     }
 
-    public double typeDamage(Pokemon targetPokemon) {
-        double damageValue = targetPokemon.pokemonSkill.getAttackPower();
+    public double superEffective() {
+        double damageValue = pokemonSkill.getAttackPower();
         if ((this.pokemonType.equals("Water") && targetPokemon.getType().equals("Fire"))
                 | (this.pokemonType.equals("Fire") && targetPokemon.getType().equals("Grass"))
-                | (this.pokemonType.equals("Grass") && targetPokemon.getType().equals("Water"))){
+                | (this.pokemonType.equals("Grass") && targetPokemon.getType().equals("Water"))) {
             damageValue = damageValue * 2;
-        } else if ((targetPokemon.getType().equals("Water") && this.pokemonType.equals("Grass") | this.pokemonType.equals("Water"))
-                | (targetPokemon.getType().equals("Fire") && this.pokemonType.equals("Water") | this.pokemonType.equals("Fire")
-                | (targetPokemon.getType().equals("Grass") && this.pokemonType.equals("Grass") | this.pokemonType.equals("Fire")) {
-            damageValue = (damageValue * 0.5)%2f;
+        }
+        return damageValue;
+    }
+
+    public double notVeryEffective() {
+        double damageValue = pokemonSkill.getAttackPower();
+        if ((targetPokemon.getType().equals("Water") && this.pokemonType.equals("Grass") | this.pokemonType.equals("Water"))
+                | (targetPokemon.getType().equals("Fire") && this.pokemonType.equals("Water") | this.pokemonType.equals("Fire"))
+                | (targetPokemon.getType().equals("Grass") && this.pokemonType.equals("Grass") | this.pokemonType.equals("Fire"))) {
+            damageValue = (damageValue * 0.5) % 2f;
+        }
         return damageValue;
     }
 
