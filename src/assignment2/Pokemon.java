@@ -192,7 +192,7 @@ public class Pokemon {
         } else if (this.EP < this.pokemonSkill.getEnergyCost()) {
             message = "Attack failed. " + this.getName() + " lacks energy: " + this.getEnergy() + " / " + this.pokemonSkill.getEnergyCost();
         } else {
-            targetPokemon.receiveDamage();
+            targetPokemon.currentHP = this.currentHP - pokemonSkill.getAttackPower();
             //check attacker's type and target's type
             message = this.getName() + " uses " + pokemonSkill.getSkillName() + " on " + targetPokemon.getName() +
                     ".\n" + targetPokemon.getName() + " has " + targetPokemon.getCurrentHP() + " HP left.";
