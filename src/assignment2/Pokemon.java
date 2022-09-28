@@ -120,9 +120,14 @@ public class Pokemon {
             this.knowsSkill = true;
      else {
             this.knowsSkill = false;
+            this.pokemonSkill = new Skill(name, pokemonSkill.getAttackPower(), pokemonSkill.getEnergyCost();
         }
         return knowsSkill;
     }
+//In Java, you must declare a method of the boolean type in order for it to return a boolean value.
+// The boolean method will return the boolean value, true or false.
+// You can either return the variable containing a boolean value or
+// use conditional statements to decide the returned value.
 
     //3.2  - Receive Damage and Rest:
     public void hasFainted() {
