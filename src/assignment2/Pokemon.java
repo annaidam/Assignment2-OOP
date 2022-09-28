@@ -91,18 +91,12 @@ public class Pokemon {
     }
 
     //Ask a pokemon whether it currently knows a skill and if it does replace it with a new skill
-    /*public void knowsSkill(String name, double attackPower, int energyCost) {
-        if (this.pokemonSkill != null) {
-            this.pokemonSkill = new Skill(name, attackPower, energyCost);
-        }
-    }*/
 
     public boolean knowsSkill() {
         if (this.pokemonSkill != null) {
             this.knowsSkill = true;
         } else {
             this.knowsSkill = false;
-            this.pokemonSkill = new Skill(name, pokemonSkill.getAttackPower(), pokemonSkill.getEnergyCost());
         }
         return knowsSkill;
     }
