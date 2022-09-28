@@ -61,7 +61,7 @@ public class Pokemon {
         } else if (anotherPokemon instanceof Pokemon) {
             Pokemon otherPokemon = (Pokemon) anotherPokemon;
             if ((this.name.equals(otherPokemon.name)) &&
-                    (this.pokemonType.equals(otherPokemon.pokemonType)) && (this.pokemonSkill.equals(otherPokemon.pokemonSkill) &&
+                    (this.pokemonType.equals(otherPokemon.pokemonType)) && (this.pokemonSkill.equals(otherPokemon.pokemonSkill)) &&
                     (this.currentHP == otherPokemon.currentHP) && (this.MAX_HP == otherPokemon.MAX_HP) &&
                     (this.EP == otherPokemon.EP))) {
                 return true;
