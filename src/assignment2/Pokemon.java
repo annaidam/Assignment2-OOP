@@ -90,10 +90,6 @@ public class Pokemon {
         this.pokemonSkill = new Skill(name, attackPower, energyCost);
     }
 
-    public void forgetSkill() {
-        this.pokemonSkill = null;
-    }
-
     //Ask a pokemon whether it currently knows a skill and if it does replace it with a new skill
     /*public void knowsSkill(String name, double attackPower, int energyCost) {
         if (this.pokemonSkill != null) {
@@ -113,6 +109,10 @@ public class Pokemon {
     //In Java, you must declare a method of the boolean type in order for it to return a boolean value.
     //The boolean method will return the boolean value, true or false.
     //You can either return the variable containing a boolean value or use conditional statements to decide the returned value.
+
+    public void forgetSkill() {
+        this.pokemonSkill = null;
+    }
 
     //3.2  - Receive Damage and Rest:
     public void hasFainted() {
