@@ -89,7 +89,7 @@ public class Pokemon {
     }
 
     //3.1 - Learn and Forget Skills:
-    public void learnSkill(String name, double attackPower, int energyCost) {
+    public void learnSkill(String name, int attackPower, int energyCost) {
         this.pokemonSkill = new Skill(name, attackPower, energyCost);
     }
 

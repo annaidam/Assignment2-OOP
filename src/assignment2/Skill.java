@@ -6,10 +6,10 @@ public class Skill {
     integer values. Once created, the state of a skill cannot be changed.*/
 
     private String name;
-    private double attackPower;
+    private int attackPower;
     private int energyCost;
 
-    Skill(String name, double attackPower, int energyCost) {
+    Skill(String name, int attackPower, int energyCost) {
         this.name = name;
         this.attackPower = attackPower;
         this.energyCost = energyCost;
@@ -19,7 +19,7 @@ public class Skill {
         return this.name;
     }
 
-    public double getAttackPower() {
+    public int getAttackPower() {
         return this.attackPower;
     }
 

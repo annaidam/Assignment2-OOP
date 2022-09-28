@@ -1,7 +1,7 @@
 package assignment2;
 
 public class TypeCalc {
-
+//damage is double
 
     /*if ((this.getType().equals("Water") && targetPokemon.getType().equals("Fire"))
             | (this.getType().equals("Fire") && targetPokemon.getType().equals("Grass"))
