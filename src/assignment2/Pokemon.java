@@ -26,8 +26,6 @@ public class Pokemon {
     public Type pokemonType;
     public Skill pokemonSkill;
     private boolean hasFainted = true;
-    public Pokemon targetPokemon;
-    public Pokemon attackerPokemon;
 
     public Pokemon(String name, int MAX_HP, Type pokemonType) {
         this.name = name;
@@ -150,23 +148,7 @@ public class Pokemon {
             currentHP = MAX_HP;
     }
 
-
-    public void attack(Pokemon targetPokemon){
-    this.targetPokemon= targetPokemon;
-
-
-
-
-        if(this.hasFainted) {
-            System.out.println("Attack failed. "+  getName() + " fainted.");
-            if(this.targetPokemon.hasFainted) {
-                System.out.println("Attack failed. "+  getName(targetPokemon) + " fainted.");
-                if (this.pokemonSkill == null) {
-                    System.out.println("Attack failed. "+  getName() + "does not know a skill.");
-                    if (this.pokemonSkill != null && this.EP<<EC {
-                }
-            }
-        }
+    public void attack(){
 
     }
     //Task 5: Pokemon Battle
@@ -177,7 +159,19 @@ public class Pokemon {
     // Be mindful to distinguish between the attacker and the defender (i.e., target) pokemon.
     //
 
+    // public void attack(){
 
+    // }
+
+    //public String attackingPokemon() {
+    //if (....) { //if the attacking pokemon is fainted
+    //     String attackingPokemon = "Attack failed. "+ this.attacker + "fainted.";
+    //  return attackingPokemon;
+    // }
+    //if the target pokemon is fainted
+    // return "Attack failed. <attacker> fainted."
+
+}
 
 //The attacking pokemon should return a message that describes the outcome of the attack.
 // The message changes depending on which one of the cases below trigger:
