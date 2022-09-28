@@ -63,7 +63,7 @@ public class Pokemon {
             if ((this.name.equals(otherPokemon.name)) &&
                     (this.pokemonType.equals(otherPokemon.pokemonType)) && (this.pokemonSkill.equals(otherPokemon.pokemonSkill)) &&
                     (this.currentHP == otherPokemon.currentHP) && (this.MAX_HP == otherPokemon.MAX_HP) &&
-                    (this.EP == otherPokemon.EP))) {
+                    (this.EP == otherPokemon.EP)) {
                 return true;
             } else {
                 return false;
