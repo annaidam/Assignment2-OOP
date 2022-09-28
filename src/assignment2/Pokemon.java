@@ -193,7 +193,7 @@ public class Pokemon {
         } else {
             targetPokemon.receiveDamage(pokemonSkill.getAttackPower());
             //check attacker's type and target's type
-            message = this.getName() + " uses " + this.pokemonSkill.getSkillName() + " on " + targetPokemon.getName() +
+            message = this.getName() + " uses " + pokemonSkill.getSkillName() + " on " + targetPokemon.getName() +
                     ".\n" + targetPokemon.getName() + " has " + targetPokemon.getCurrentHP() + " HP left.";
             if (targetPokemon.hasFainted) {
                 message = targetPokemon.getName() + " faints.";
