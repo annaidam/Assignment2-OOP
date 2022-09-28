@@ -169,38 +169,36 @@ public class Pokemon {
     }
     //Task 5: Pokemon Battle
     public String attack(Pokemon targetPokemon) {
-        //the return message depends on the conditionals below
         this.targetPokemon = targetPokemon;
         String message;
         if (this.hasFainted) {
-            message = "Attack failed. " + getName() + " fainted.";
+            message = "Attack failed. " + this.getName() + " fainted.";
         } else if (this.targetPokemon.hasFainted) {
             message = "Attack failed. " + targetPokemon.getName() + " fainted.";
         } else if (this.pokemonSkill == null) {
-            message = "Attack failed. " + getName() + "does not know a skill.";
+            message = "Attack failed. " + this.getName() + "does not know a skill.";
         } else if (this.EP < this.pokemonSkill.getEnergyCost()) {
-            message = "Attack failed. " + getName() + "lacks energy:" + getEnergy()/pokemonSkill.getEnergyCost();
-        } else {
-            if ((this.getType() == Type.WATER && targetPokemon.getType() == Type.FIRE)
-            | (this.getType() == Type.FIRE && targetPokemon.getType() == Type.GRASS)
-            | (this.getType() == Type.GRASS && targetPokemon.getType() == Type.WATER)){
+            message = "Attack failed. " + this.getName() + "lacks energy:" + this.getEnergy() + " / " + pokemonSkill.getEnergyCost();
+        /*} else {
+            if ((this.getType().equals("Water") && targetPokemon.getType().equals("Fire"))
+            | (this.getType().equals("Fire") && targetPokemon.getType().equals("Grass"))
+            | (this.getType().equals("Grass") && targetPokemon.getType().equals("Water"))){
                 receiveDamage(this.pokemonSkill.getAttackPower() * 2);
                 message = getName() + " uses " + this.pokemonSkill.getSkillName() + " on " + targetPokemon.getName() +
                         ". It is super effective!\n" + targetPokemon.getName() + " has " + targetPokemon.getCurrentHP() + " HP left.";
-            } else if ((targetPokemon.getType() == Type.WATER && this.getType() == Type.GRASS | this.getType() == Type.WATER)
-            | (targetPokemon.getType() == Type.FIRE && this.getType() == Type.WATER | this.getType() == Type.FIRE)
-            | (targetPokemon.getType() == Type.GRASS && this.getType() == Type.GRASS | this.getType() == Type.FIRE)) {
+            } else if ((targetPokemon.getType().equals("Water") && this.getType().equals("Grass") | this.getType().equals("Water"))
+            | (targetPokemon.getType().equals("Fire") && this.getType().equals("Water") | this.getType().equals("Fire")
+            | (targetPokemon.getType().equals("Grass") && this.getType().equals("Grass") | this.getType().equals("Fire")) {
                 receiveDamage((this.pokemonSkill.getAttackPower() * 0.5)%2f);
                 message = getName() + " uses " + this.pokemonSkill.getSkillName() + " on " + targetPokemon.getName() +
-                        ". It is not very effective...\n" + targetPokemon.getName() + " has " + targetPokemon.getCurrentHP() + " HP left.";
+                        ". It is not very effective...\n" + targetPokemon.getName() + " has " + targetPokemon.getCurrentHP() + " HP left.";*/
             } else {
-                message = getName() + " uses " + this.pokemonSkill.getSkillName() + " on " + targetPokemon.getName() +
+                message = this.getName() + " uses " + this.pokemonSkill.getSkillName() + " on " + targetPokemon.getName() +
                         ".\n" + targetPokemon.getName() + " has " + targetPokemon.getCurrentHP() + " HP left.";
             }
             if (targetPokemon.hasFainted) {
                 message = targetPokemon.getName() + "faints.";
             }
-        }
         return message;
     }
 }
