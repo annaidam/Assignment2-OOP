@@ -11,7 +11,7 @@ public class Pokemon {
     private boolean hasFainted = false;
     private boolean knowsSkill = false;
 
-    final String LINE_SEPARATOR = System.lineSeparator();
+    final String END_OF_LINE = System.lineSeparator();
 
     final int minValue = 0;
     final int maxValue = 100;
@@ -71,7 +71,7 @@ public class Pokemon {
     }
 
     public String toString() {
-        String pokemon = "";
+        String pokemon;
         if (!this.knowsSkill()) {
             pokemon = this.getName() + " (" + this.getType() + ")";
         } else {
@@ -165,7 +165,7 @@ public class Pokemon {
     2: If the pokemon recovers health when using the item:
     “<poke name> used <item name>. It healed <amount healed> HP.”*/
     public String useItem(Item item) {
-        String useItem = "";
+        String useItem;
         if (this.getCurrentHP() == this.getMAX_HP()) {
             useItem = this.getName() + " could not use " + item.getItemName() + ". HP is already full.";
         } else {
@@ -180,53 +180,44 @@ public class Pokemon {
     }
 
     //Task 5: Pokemon Battle
-
     public String attack(Pokemon targetPokemon) {
-
-        String message;
-
+        String outcome;
+        //checking if the attacker pokemon is able to attack
         if (this.hasFainted) {
-            message = "Attack failed. " + this.getName() + " fainted.";
+            outcome = "Attack failed. " + this.getName() + " fainted.";
         } else if (targetPokemon.hasFainted) {
-            message = "Attack failed. " + targetPokemon.getName() + " fainted.";
+            outcome = "Attack failed. " + targetPokemon.getName() + " fainted.";
         } else if (this.pokemonSkill == null) {
-            message = "Attack failed. " + this.getName() + " does not know a skill.";
+            outcome = "Attack failed. " + this.getName() + " does not know a skill.";
         } else if (this.energyPoints < this.pokemonSkill.getEnergyCost()) {
-            message = "Attack failed. " + this.getName() + " lacks energy: " + this.getEnergy() + " / " + this.pokemonSkill.getEnergyCost();
+            outcome = "Attack failed. " + this.getName() + " lacks energy: " + this.getEnergy() + " / " + this.pokemonSkill.getEnergyCost();
         } else {
-
-
-            // explain the matrix relation with the types
-
+            //explaining the matrix relation with the types
             Type enumAttacker = Type.valueOf(this.getType().toUpperCase());
             Type enumDefender = Type.valueOf(targetPokemon.getType().toUpperCase());
-
             double result = TypeCalc.getFactorValue(enumAttacker.pokemonIndex, enumDefender.pokemonIndex);
 
-            // explain the damage
+            // explaining the damage
             spendEP(this.pokemonSkill.getEnergyCost());
-
             double damage = this.pokemonSkill.getAttackPower() * result;
-
             targetPokemon.receiveDamage((int) damage);
 
-            // TODO: avoid massive repetition
+            //avoiding massive repetition
+            String message1 = this.getName() + " uses " + this.pokemonSkill.getSkillName() + " on " + targetPokemon.getName() + ". ";
+            String message2 = targetPokemon.getName() + " has " + targetPokemon.getCurrentHP() + " HP left.";
+            outcome = message1 + END_OF_LINE + message2;
 
-                if (result == 1) {
-                    message = this.getName() + " uses " + this.pokemonSkill.getSkillName() + " on " + targetPokemon.getName() +
-                            ". " + LINE_SEPARATOR + targetPokemon.getName() + " has " + targetPokemon.getCurrentHP() + " HP left.";
-                } else if (result == 2) {
-                    message = this.getName() + " uses " + this.pokemonSkill.getSkillName() + " on " + targetPokemon.getName() +
-                            ". It is super effective!" + LINE_SEPARATOR + targetPokemon.getName() + " has " + targetPokemon.getCurrentHP() + " HP left.";
-                } else {
-                    message = this.getName() + " uses " + this.pokemonSkill.getSkillName() + " on " + targetPokemon.getName() +
-                            ". It is not very effective..." + LINE_SEPARATOR + targetPokemon.getName() + " has " + targetPokemon.getCurrentHP() + " HP left.";
-                }
-
-                if (targetPokemon.hasFainted) {
-                    message = targetPokemon.getName() + " faints.";
-                }
+            if (result == 1) {
+                return outcome;
+            } else if (result == 2) {
+                outcome = message1 + TypeCalc.superEffective() + END_OF_LINE + message2;
+            } else {
+                outcome = message1 + TypeCalc.notVeryEffective() + END_OF_LINE + message2;
             }
-            return message;
+            if (targetPokemon.hasFainted) {
+                outcome = outcome + targetPokemon.getName() + " faints.";
+            }
         }
+        return outcome;
+    }
 }

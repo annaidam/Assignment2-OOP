@@ -12,4 +12,14 @@ public class TypeCalc {
     public static double getFactorValue(int rowIndex, int columnIndex) {
         return EFFECTIVE_MATRIX[rowIndex][columnIndex];
     }
+
+    public static String superEffective() {
+        String superEffective = "It is super effective!";
+        return superEffective;
+    }
+
+    public static String notVeryEffective() {
+        String notVeryEffective = "It is not very effective...";
+        return notVeryEffective;
+    }
 }
