@@ -10,18 +10,13 @@ public class Pokemon {
 
     private boolean hasFainted = false;
     private boolean knowsSkill = false;
-
     final String END_OF_LINE = System.lineSeparator();
-
     final int minValue = 0;
-    final int maxValue = 100;
-
 
     public Pokemon(String name, int MAX_HP, String pokemonType) {
         this.name = name;
         this.MAX_HP = MAX_HP;
-        this.energyPoints = maxValue;
-
+        this.energyPoints = MAX_HP;
         this.currentHP = MAX_HP;
         this.pokemonType = pokemonType;
     }
@@ -104,7 +99,6 @@ public class Pokemon {
     public void hasFainted() {
         this.hasFainted = true;
     }
-
 
     public void receiveDamage(int damageValue) {
         this.currentHP -= damageValue;
