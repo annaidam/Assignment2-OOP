@@ -16,8 +16,6 @@ public class Pokemon {
     final int minValue=0;
     final int maxValue=100;
 
-    // TODO: for a constructor, avoid using conditionals or any logic
-    // for logic, etc. - create custom class methods.
 
     public Pokemon(String name, int MAX_HP, String pokemonType) {
         this.name = name;
