@@ -116,6 +116,7 @@ public class Pokemon {
         this.hasFainted = true;
     }
 
+
     public void receiveDamage(int damageValue) {
         this.currentHP -= damageValue;
         if (this.currentHP <= 0) {
@@ -190,10 +191,14 @@ public class Pokemon {
         } else if (this.EP < this.pokemonSkill.getEnergyCost()) {
             message = "Attack failed. " + this.getName() + " lacks energy: " + this.getEnergy() + " / " + this.pokemonSkill.getEnergyCost();
         } else {
-            targetPokemon.receiveDamage(pokemonSkill.getAttackPower());
-            //check attacker's type and target's type
-            message = this.getName() + " uses " + pokemonSkill.getSkillName() + " on " + targetPokemon.getName() +
-                    ".\n" + targetPokemon.getName() + " has " + targetPokemon.getCurrentHP() + " HP left.";
+            if (this.getType().equals("Normal") | targetPokemon.getType().equals("Normal")) {
+                targetPokemon.receiveDamage(this.pokemonSkill.getAttackPower());
+                message = this.getName() + " uses " + this.pokemonSkill.getSkillName() + " on " + targetPokemon.getName() +
+                        ".\n" + targetPokemon.getName() + " has " + targetPokemon.getCurrentHP() + " HP left.";
+                }
+            } else { //check attacker's type and target's type
+            calcType();
+         }
             if (targetPokemon.hasFainted) {
                 message = targetPokemon.getName() + " faints.";
             }

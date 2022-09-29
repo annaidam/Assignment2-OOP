@@ -45,7 +45,14 @@ public class ItemBag {
     (P3, 20, 2.2)]*/
     public void addItems() {
         //add items to the right index
-        //sort the items by weight from lightest to heaviest
+        //sort the items by weight from heaviest to lightest
+        Item heaviestItem = this.itemsInBag.get(0);
+        for (int i = 0; i < this.itemsInBag.size(); i++) {
+            Item currentItem = itemsInBag.get(i);
+            if (currentItem.getItemWeight() > heaviestItem.getItemWeight()) {
+                heaviestItem = currentItem;
+            }
+        }
     }
 
     /*7.2 - Removing items:
@@ -77,12 +84,6 @@ public class ItemBag {
         //if bag is empty popping returns to null
         if (!itemsInBag.isEmpty()) {
             Item heaviestItem = itemsInBag.get(0);
-            for (int i = 0; i < this.itemsInBag.size(); i++) {
-                Item currentItem = itemsInBag.get(i);
-                if (currentItem.getItemWeight() > heaviestItem.getItemWeight()) {
-                    heaviestItem = currentItem;
-                }
-            }
         }
     }
 }
