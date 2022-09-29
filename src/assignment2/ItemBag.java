@@ -43,12 +43,11 @@ public class ItemBag {
     // after adding (PY, 40, 4.5) - placed at index 1
     [ (PX, 20, 5.3), (PY, 40, 4.5), (P1, 20, 4.5), (P2, 20, 4.5),
     (P3, 20, 2.2)]*/
-    public void addItems() {
-        //add items to the right index
-        //sort the items by weight from heaviest to lightest
-        Item heaviestItem = this.itemsInBag.get(0);
+    public void addItem(Item newItem) {
+        itemsInBag.add(newItem);
         for (int i = 0; i < this.itemsInBag.size(); i++) {
             Item currentItem = itemsInBag.get(i);
+            Item heaviestItem = itemsInBag.get(0);
             if (currentItem.getItemWeight() > heaviestItem.getItemWeight()) {
                 heaviestItem = currentItem;
             }
@@ -61,25 +60,42 @@ public class ItemBag {
     reorganise itself so that order is preserved and no “empty” slots are left.
     The bag should then return a reference to the removed item. In case the specified index is
     out of bounds, the method should return null.*/
-    public void removeItems() {
+    public String removeItemAt(int index) {
         //remove an item based on specified index
         //automatically reorganise the items in the bag
+        String removedItem = "";
+        for (int i = 0; i < this.itemsInBag.size(); i++) {
+            Item currentItem = itemsInBag.get(i);
+            if (index == i) {
+                itemsInBag.remove(i);
+                removedItem = currentItem.getItemName() + " heals " + currentItem.getHealing_power() + " HP. (" + currentItem.getItemWeight() + ")";
+            } else {
+                removedItem = null;
+            }
+        }
+        return removedItem;
     }
 
     /*7.3 - Peeking at items:
     A user can peek at the item in a specific position in the bag. The bag should not provide a
     reference to the actual item. Instead, the bag returns a string representation of the item
     according to what has been specified in Task X.*/
-    public void peekinAtItems() {
-        //check an item in a specific position (index)
-        //Printing String about the item
+    public String peekItemAt(int index) {
+        String peeking = "";
+        for (int i = 0; i < this.itemsInBag.size(); i++) {
+            Item currentItem = itemsInBag.get(i);
+            if (index == i) {
+                peeking = currentItem.getItemName() + " heals " + currentItem.getHealing_power() + " HP. (" + currentItem.getItemWeight() + ")";
+            }
+        }
+        return peeking;
     }
 
     /*7.4 - Popping items:
     A user can retrieve the heaviest item in the bag. This means that the bag should remove
     and return a reference to its first item. Typically, this operation is named ‘pop’. If the bag is
     empty, popping should return null.*/
-    public void poppingItems() {
+    public void popItem() {
         //find the heaviest item in the bag ie. the first ite
         //if bag is empty popping returns to null
         if (!itemsInBag.isEmpty()) {
