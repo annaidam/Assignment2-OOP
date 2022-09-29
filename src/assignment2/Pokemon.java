@@ -53,6 +53,7 @@ public class Pokemon {
             return false;
         } else if (anotherPokemon instanceof Pokemon) {
             Pokemon otherPokemon = (Pokemon) anotherPokemon;
+            //if time: fix the conditional here to look cleaner
             if (!this.knowsSkill && !otherPokemon.knowsSkill) {
                 if ((this.name.equals(otherPokemon.name)) &&
                         (this.pokemonType.equals(otherPokemon.pokemonType)) &&
@@ -80,13 +81,12 @@ public class Pokemon {
         return pokemon;
     }
 
-    //3.1 - Learn and Forget Skills:
+    //learning a new skill
     public void learnSkill(String name, int attackPower, int energyCost) {
         this.pokemonSkill = new Skill(name, attackPower, energyCost);
     }
 
-    //Ask a pokemon whether it currently knows a skill and if it does replace it with a new skill
-
+    //ask a pokemon whether it currently knows a skill and if it does replace it with a new skill
     public boolean knowsSkill() {
         if (this.pokemonSkill != null) {
             this.knowsSkill = true;
@@ -96,16 +96,16 @@ public class Pokemon {
         return knowsSkill;
     }
 
+    //forgetting a learned skill
     public void forgetSkill() {
         this.pokemonSkill = null;
     }
 
-    //3.2  - Receive Damage and Rest:
     public void hasFainted() {
         this.hasFainted = true;
     }
 
-
+    //receive damage in battle
     public void receiveDamage(int damageValue) {
         this.currentHP -= damageValue;
 
@@ -117,10 +117,10 @@ public class Pokemon {
         }
     }
 
+    //recover HP while resting
     public void rest() {
         int bonusHP = 20;
         if ((!this.hasFainted) && (this.currentHP < this.MAX_HP)) {
-            //If the pokemon has not fainted and the HP is lower than max HP, increase current HP by 20
             this.currentHP += bonusHP;
             if (this.currentHP > this.MAX_HP) {
                 this.currentHP = this.MAX_HP;
@@ -128,7 +128,7 @@ public class Pokemon {
         }
     }
 
-    //3.3 - Spend and Recover Energy Points:
+    //spending energy points during battle
     public void spendEP(int EC) {
         if (this.energyPoints >= EC) {
             this.energyPoints -= EC;
@@ -138,8 +138,8 @@ public class Pokemon {
         }
     }
 
+    //recovering energy during battle
     public void recoverEnergy() {
-
         int bonusEnergyPoints = 25;
         if (!this.hasFainted) {
             this.energyPoints += bonusEnergyPoints; //pokemon can recover energy where a fixed amount of 25 EP is restored.
@@ -153,10 +153,6 @@ public class Pokemon {
     even if the pokemon has fainted. Note that the HP should never go above the MAX HP.
     Whenever an item heals a pokemon over the MAX HP, the pokemon’s HP should be its MAX
     HP.*/
-    /*: If the pokemon has full HP before using the item:
-    “<poke name> could not use <item name>. HP is already full.”
-    2: If the pokemon recovers health when using the item:
-    “<poke name> used <item name>. It healed <amount healed> HP.”*/
     public String useItem(Item item) {
         String useItem;
         if (this.getCurrentHP() == this.getMAX_HP()) {
