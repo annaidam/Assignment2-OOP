@@ -22,21 +22,9 @@ public class Pokemon {
     public Pokemon(String name, int MAX_HP, String pokemonType) {
         this.name = name;
         this.MAX_HP = MAX_HP;
-        this.energyPoints = MAX_HP;
-
-        if (energyPoints > maxValue) {
-            energyPoints = maxValue;
-        } else if (energyPoints < minValue) {
-            energyPoints = minValue;
-        }
+       // this.energyPoints = MAX_HP;
 
         this.currentHP = MAX_HP;
-        if (currentHP < minValue) {
-            currentHP = minValue;
-        } else if (currentHP > MAX_HP) {
-            currentHP = MAX_HP;
-        }
-
         this.pokemonType = pokemonType;
     }
 
@@ -167,8 +155,8 @@ public class Pokemon {
 
         if (!this.hasFainted) {
             this.energyPoints += bonusEnergyPoints;
-            if (this.energyPoints > maxValue) {
-                this.energyPoints = maxValue;
+            if (this.energyPoints > this.MAX_HP) {
+                this.energyPoints = this.MAX_HP;
             }
         }
     }
@@ -241,5 +229,4 @@ public class Pokemon {
             }
             return message;
         }
-}
 }
