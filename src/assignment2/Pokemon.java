@@ -95,9 +95,6 @@ public class Pokemon {
         }
         return knowsSkill;
     }
-    //In Java, you must declare a method of the boolean type in order for it to return a boolean value.
-    //The boolean method will return the boolean value, true or false.
-    //You can either return the variable containing a boolean value or use conditional statements to decide the returned value.
 
     public void forgetSkill() {
         this.pokemonSkill = null;
@@ -140,18 +137,14 @@ public class Pokemon {
             }
         }
     }
-    //A pokemon uses EP during battle
-    //However, a pokemon can recover energy where a fixed amount of 25 EP is restored.
-    //Restoring energy has no effect on a pokemon that has fainted.
 
-    // Similarly, EP can never be less than zero or greater than 100
     public void recoverEnergy() {
-        //If pokemon has not fainted
+
         int bonusEnergyPoints = 25;
         if (!this.hasFainted) {
-            this.energyPoints += bonusEnergyPoints;
-            if (this.energyPoints > maxValue) {
-                this.energyPoints = maxValue;
+            this.energyPoints += bonusEnergyPoints; //pokemon can recover energy where a fixed amount of 25 EP is restored.
+            if (this.energyPoints > this.MAX_HP) {  //EP can never be less than zero or greater than 100
+                this.energyPoints = this.MAX_HP;
             }
         }
     }
