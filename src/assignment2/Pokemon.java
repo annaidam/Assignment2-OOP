@@ -1,12 +1,10 @@
 package assignment2;
 
-// TODO: avoid using magic numbers - a numerical values with unexplained meaning or a behavior
-
 public class Pokemon {
     private String name;
     private int MAX_HP;
     private int currentHP;
-    private int EP; // TODO: refactor 'EP' to something more self-explanatory
+    private int energyPoints;
     private String pokemonType;
     public Skill pokemonSkill;
 
@@ -15,7 +13,8 @@ public class Pokemon {
 
     final String LINE_SEPARATOR = System.lineSeparator();
 
-    public Pokemon targetPokemon;  // TODO: this is a redundant class attribute
+    private int minValue=0;
+    private int maxValue=100;
 
     // TODO: for a constructor, avoid using conditionals or any logic
     // for logic, etc. - create custom class methods.
@@ -23,17 +22,17 @@ public class Pokemon {
     public Pokemon(String name, int MAX_HP, String pokemonType) {
         this.name = name;
         this.MAX_HP = MAX_HP;
-        this.EP = MAX_HP;
+        this.energyPoints = MAX_HP;
 
-        if (EP > 100) {
-            EP = 100;
-        } else if (EP < 0) {
-            EP = 0;
+        if (energyPoints > maxValue) {
+            energyPoints = maxValue;
+        } else if (energyPoints < minValue) {
+            energyPoints = minValue;
         }
 
         this.currentHP = MAX_HP;
-        if (currentHP < 0) {
-            currentHP = 0;
+        if (currentHP < minValue) {
+            currentHP = minValue;
         } else if (currentHP > MAX_HP) {
             currentHP = MAX_HP;
         }
@@ -42,7 +41,7 @@ public class Pokemon {
     }
 
     public int getEnergy() {
-        return this.EP;
+        return this.energyPoints;
     }
 
     public int getCurrentHP() {
@@ -73,7 +72,7 @@ public class Pokemon {
                         (this.pokemonType.equals(otherPokemon.pokemonType)) &&
                         (this.currentHP == otherPokemon.currentHP) &&
                         (this.MAX_HP == otherPokemon.MAX_HP) &&
-                        (this.EP == otherPokemon.EP)) {
+                        (this.energyPoints == otherPokemon.energyPoints)) {
                     return true;
                 }
             } else if (this.knowsSkill && otherPokemon.knowsSkill) {
@@ -127,8 +126,8 @@ public class Pokemon {
     public void receiveDamage(int damageValue) {
         this.currentHP -= damageValue;
 
-        if (this.currentHP <= 0) {
-            this.currentHP = 0;
+        if (this.currentHP <= minValue) {
+            this.currentHP = minValue;
             if (!this.hasFainted) {
                 hasFainted();
             }
@@ -136,9 +135,10 @@ public class Pokemon {
     }
 
     public void rest() {
+        int bonusHP=20;
         if ((!this.hasFainted) && (this.currentHP < this.   MAX_HP)) {
             //If the pokemon has not fainted and the HP is lower than max HP, increase current HP by 20
-            this.currentHP += 20;
+            this.currentHP += bonusHP;
             if (this.currentHP > this.MAX_HP) {
                 this.currentHP = this.MAX_HP;
             }
@@ -147,10 +147,11 @@ public class Pokemon {
 
     //3.3 - Spend and Recover Energy Points:
     public void spendEP(int EC) {
-        if (this.EP >= EC) {
-            this.EP -= EC;
-            if (this.EP < 0) {
-                this.EP = 0;
+
+        if (this.energyPoints >= EC) {
+            this.energyPoints -= EC;
+            if (this.energyPoints < minValue) {
+                this.energyPoints = minValue;
             }
         }
     }
@@ -162,10 +163,12 @@ public class Pokemon {
 
     public void recoverEnergy() {
         //If pokemon has not fainted
+        int bonusEnergyPoints=25;
+
         if (!this.hasFainted) {
-            this.EP += 25;
-            if (this.EP > 100) {
-                this.EP = 100;
+            this.energyPoints += bonusEnergyPoints;
+            if (this.energyPoints > maxValue) {
+                this.energyPoints = maxValue;
             }
         }
     }
@@ -190,12 +193,8 @@ public class Pokemon {
 
     //Task 5: Pokemon Battle
 
-    //type calc not inside pokemon
-    //only need type
-    //if type is this.... effective
-    //attack method calculate damage
-    //method receive damage
     public String attack(Pokemon targetPokemon) {
+        //private Pokemon targetPokemon;  // TODO: this is a redundant class attribute
         this.targetPokemon = targetPokemon;
         String message;
 
@@ -205,7 +204,7 @@ public class Pokemon {
             message = "Attack failed. " + targetPokemon.getName() + " fainted.";
         } else if (this.pokemonSkill == null) {
             message = "Attack failed. " + this.getName() + " does not know a skill.";
-        } else if (this.EP < this.pokemonSkill.getEnergyCost()) {
+        } else if (this.energyPoints < this.pokemonSkill.getEnergyCost()) {
             message = "Attack failed. " + this.getName() + " lacks energy: " + this.getEnergy() + " / " + this.pokemonSkill.getEnergyCost();
         } else {
 
