@@ -13,8 +13,8 @@ public class Pokemon {
 
     final String LINE_SEPARATOR = System.lineSeparator();
 
-    private int minValue=0;
-    private int maxValue=100;
+    final int minValue=0;
+    final int maxValue=100;
 
     // TODO: for a constructor, avoid using conditionals or any logic
     // for logic, etc. - create custom class methods.
@@ -194,8 +194,7 @@ public class Pokemon {
     //Task 5: Pokemon Battle
 
     public String attack(Pokemon targetPokemon) {
-        //private Pokemon targetPokemon;  // TODO: this is a redundant class attribute
-        this.targetPokemon = targetPokemon;
+
         String message;
 
         if (this.hasFainted) {
