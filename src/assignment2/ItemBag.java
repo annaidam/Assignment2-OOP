@@ -7,12 +7,12 @@ public class ItemBag {
     The bag also stores a collection of items that begins empty when creating the bag.
     The maximum weight cannot change once the bag is created. You don’t need to write code to check if two bags are equal.*/
     private double maxBagWeight;
-    private double currentBagWeight;
-    private ArrayList itemsInBag = new ArrayList();
+    private double currentBagWeight = 0;
+    ArrayList<Item> itemsInBag = new ArrayList<>();
 
-    ItemBag(double maxBagWeight, ArrayList itemsInBag) {
+    ItemBag(double maxBagWeight) {
         this.maxBagWeight = maxBagWeight;
-        this.itemsInBag = itemsInBag;
+        this.itemsInBag.isEmpty();
     }
 
     /*The bag should provide: the current number of items stored, the current weight of the bag,
@@ -20,9 +20,11 @@ public class ItemBag {
     public int getNumberOfItems() {return this.itemsInBag.size();}
 
     public double getCurrentBagWeight() {
-        for (int i = 0; i < this.itemsInBag.size(); i++) {
-            //this.itemsInBag.getItemWeight(i);
-            //etsi jokaisen itemin paino ja summaa ne
+        //find the weight of each item and sum them up
+        if (!this.itemsInBag.isEmpty()) {
+            for (Item currentItem : itemsInBag) {
+                currentBagWeight = (currentBagWeight + currentItem.getItemWeight()%2f);
+            }
         }
         return this.currentBagWeight;
     }
@@ -42,10 +44,8 @@ public class ItemBag {
     [ (PX, 20, 5.3), (PY, 40, 4.5), (P1, 20, 4.5), (P2, 20, 4.5),
     (P3, 20, 2.2)]*/
     public void addItems() {
-        for (int i = 0; i < this.itemsInBag.size(); i++) {
-            itemsInBag.add(i);
-            //sort the items by weight from lightest to heaviest
-        }
+        //add items to the right index
+        //sort the items by weight from lightest to heaviest
     }
 
     /*7.2 - Removing items:
@@ -75,5 +75,14 @@ public class ItemBag {
     public void poppingItems() {
         //find the heaviest item in the bag ie. the first ite
         //if bag is empty popping returns to null
+        if (!itemsInBag.isEmpty()) {
+            Item heaviestItem = itemsInBag.get(0);
+            for (int i = 0; i < this.itemsInBag.size(); i++) {
+                Item currentItem = itemsInBag.get(i);
+                if (currentItem.getItemWeight() > heaviestItem.getItemWeight()) {
+                    heaviestItem = currentItem;
+                }
+            }
+        }
     }
 }
