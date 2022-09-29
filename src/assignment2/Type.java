@@ -8,5 +8,4 @@ public enum Type {
     Type(int index) {
         this.pokemonIndex = index;
     }
-
 }
