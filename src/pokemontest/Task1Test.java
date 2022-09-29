@@ -35,7 +35,7 @@ public class Task1Test {
         Pokemon exeggute2 = new Pokemon("Exeggcute", 95, "Grass");
         Pokemon ditto = new Pokemon("Exeggcute", 95, "Normal"); // diff type.
 
-        assertEquals(exeggute1, exeggute2); //If they both dont know a skill, they have equal skills.
+        assertEquals(exeggute1, exeggute2); //If they both don't know a skill, they have equal skills.
         assertNotEquals(exeggute1, ditto);
     }
 

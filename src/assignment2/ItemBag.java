@@ -17,9 +17,9 @@ public class ItemBag {
 
     /*The bag should provide: the current number of items stored, the current weight of the bag,
     and its maximum weight. Other operations are defined below.*/
-    public int getNumberOfItems() {return this.itemsInBag.size();}
+    public int getNumOfItems() {return this.itemsInBag.size();}
 
-    public double getCurrentBagWeight() {
+    public double getCurrentWeight() {
         //find the weight of each item and sum them up
         if (!this.itemsInBag.isEmpty()) {
             for (Item currentItem : itemsInBag) {
@@ -29,7 +29,7 @@ public class ItemBag {
         return this.currentBagWeight;
     }
 
-    public double getMaxBagWeight() {return this.maxBagWeight;}
+    public double getMaxWeight() {return this.maxBagWeight;}
 
     /*7.1 - Adding items to the bag:
     The collection of items can accept repeated items and the items are stored in a specific

@@ -1,14 +1,12 @@
 package assignment2;
 
 public enum Type {
-    WATER("Water"),
-    FIRE("Fire"),
-    GRASS("Grass"),
-    NORMAL("Normal");
+    NORMAL(0), FIRE(1), WATER(2), GRASS(3);
 
-  public final String pokemonType;
+    final int pokemonIndex;
 
-    Type(String pokemonType) {
-        this.pokemonType = pokemonType;
+    Type(int index) {
+        this.pokemonIndex = index;
     }
+
 }

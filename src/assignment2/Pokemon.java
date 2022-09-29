@@ -1,23 +1,30 @@
 package assignment2;
 
-import org.w3c.dom.ls.LSOutput;
+// TODO: avoid using magic numbers - a numerical values with unexplained meaning or a behavior
 
 public class Pokemon {
-    public String name;
-    public int MAX_HP;
+    private String name;
+    private int MAX_HP;
     private int currentHP;
-    private int EP;
-    public String pokemonType;
+    private int EP; // TODO: refactor 'EP' to something more self-explanatory
+    private String pokemonType;
     public Skill pokemonSkill;
-    private boolean hasFainted = true;
+
+    private boolean hasFainted = false;
     private boolean knowsSkill = false;
 
-    public Pokemon targetPokemon;
+    final String LINE_SEPARATOR = System.lineSeparator();
+
+    public Pokemon targetPokemon;  // TODO: this is a redundant class attribute
+
+    // TODO: for a constructor, avoid using conditionals or any logic
+    // for logic, etc. - create custom class methods.
 
     public Pokemon(String name, int MAX_HP, String pokemonType) {
         this.name = name;
         this.MAX_HP = MAX_HP;
         this.EP = MAX_HP;
+
         if (EP > 100) {
             EP = 100;
         } else if (EP < 0) {
@@ -119,6 +126,7 @@ public class Pokemon {
 
     public void receiveDamage(int damageValue) {
         this.currentHP -= damageValue;
+
         if (this.currentHP <= 0) {
             this.currentHP = 0;
             if (!this.hasFainted) {
@@ -128,7 +136,7 @@ public class Pokemon {
     }
 
     public void rest() {
-        if ((!this.hasFainted) && (this.currentHP < this.MAX_HP)) {
+        if ((!this.hasFainted) && (this.currentHP < this.   MAX_HP)) {
             //If the pokemon has not fainted and the HP is lower than max HP, increase current HP by 20
             this.currentHP += 20;
             if (this.currentHP > this.MAX_HP) {
@@ -141,16 +149,24 @@ public class Pokemon {
     public void spendEP(int EC) {
         if (this.EP >= EC) {
             this.EP -= EC;
+            if (this.EP < 0) {
+                this.EP = 0;
+            }
         }
     }
     //A pokemon uses EP during battle
     //However, a pokemon can recover energy where a fixed amount of 25 EP is restored.
     //Restoring energy has no effect on a pokemon that has fainted.
 
+    // Similarly, EP can never be less than zero or greater than 100
+
     public void recoverEnergy() {
         //If pokemon has not fainted
         if (!this.hasFainted) {
             this.EP += 25;
+            if (this.EP > 100) {
+                this.EP = 100;
+            }
         }
     }
 
@@ -167,7 +183,7 @@ public class Pokemon {
                 currentHP = MAX_HP;
             }
             System.out.println(this.getName() + " used " + item.getItemName() + ". It healed "
-                    + (this.getCurrentHP() - item.getHealing_power()) + "HP.");
+                    + (this.getCurrentHP() - item.getHealing_power()) + " HP.");
         }
         return item;
     }
@@ -182,6 +198,7 @@ public class Pokemon {
     public String attack(Pokemon targetPokemon) {
         this.targetPokemon = targetPokemon;
         String message;
+
         if (this.hasFainted) {
             message = "Attack failed. " + this.getName() + " fainted.";
         } else if (targetPokemon.hasFainted) {
@@ -191,18 +208,38 @@ public class Pokemon {
         } else if (this.EP < this.pokemonSkill.getEnergyCost()) {
             message = "Attack failed. " + this.getName() + " lacks energy: " + this.getEnergy() + " / " + this.pokemonSkill.getEnergyCost();
         } else {
-            if (this.getType().equals("Normal") | targetPokemon.getType().equals("Normal")) {
-                targetPokemon.receiveDamage(this.pokemonSkill.getAttackPower());
+
+
+            // explain the matrix relation with the types
+
+            Type enumAttacker = Type.valueOf(this.getType().toUpperCase());
+            Type enumDefender = Type.valueOf(targetPokemon.getType().toUpperCase());
+
+            double result = TypeCalc.getFactorValue(enumAttacker.pokemonIndex, enumDefender.pokemonIndex);
+
+            // explain the damage
+            spendEP(this.pokemonSkill.getEnergyCost());
+
+            double damage = this.pokemonSkill.getAttackPower() * result;
+
+            targetPokemon.receiveDamage((int) damage);
+
+            // TODO: avoid massive repetition
+            if (result == 1) {
                 message = this.getName() + " uses " + this.pokemonSkill.getSkillName() + " on " + targetPokemon.getName() +
-                        ".\n" + targetPokemon.getName() + " has " + targetPokemon.getCurrentHP() + " HP left.";
-                }
-            } else { //check attacker's type and target's type
-            calcType();
-         }
+                        ". " + LINE_SEPARATOR + targetPokemon.getName() + " has " + targetPokemon.getCurrentHP() + " HP left.";
+            } else if (result == 2) {
+                message = this.getName() + " uses " + this.pokemonSkill.getSkillName() + " on " + targetPokemon.getName() +
+                        ". It is super effective!" + LINE_SEPARATOR + targetPokemon.getName() + " has " + targetPokemon.getCurrentHP() + " HP left.";
+            } else {
+                message = this.getName() + " uses " + this.pokemonSkill.getSkillName() + " on " + targetPokemon.getName() +
+                        ". It is not very effective..." + LINE_SEPARATOR + targetPokemon.getName() + " has " + targetPokemon.getCurrentHP() + " HP left.";
+            }
+
             if (targetPokemon.hasFainted) {
                 message = targetPokemon.getName() + " faints.";
             }
-
+        }
         return message;
     }
 }
