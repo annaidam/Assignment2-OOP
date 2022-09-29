@@ -223,21 +223,23 @@ public class Pokemon {
             targetPokemon.receiveDamage((int) damage);
 
             // TODO: avoid massive repetition
-            if (result == 1) {
-                message = this.getName() + " uses " + this.pokemonSkill.getSkillName() + " on " + targetPokemon.getName() +
-                        ". " + LINE_SEPARATOR + targetPokemon.getName() + " has " + targetPokemon.getCurrentHP() + " HP left.";
-            } else if (result == 2) {
-                message = this.getName() + " uses " + this.pokemonSkill.getSkillName() + " on " + targetPokemon.getName() +
-                        ". It is super effective!" + LINE_SEPARATOR + targetPokemon.getName() + " has " + targetPokemon.getCurrentHP() + " HP left.";
-            } else {
-                message = this.getName() + " uses " + this.pokemonSkill.getSkillName() + " on " + targetPokemon.getName() +
-                        ". It is not very effective..." + LINE_SEPARATOR + targetPokemon.getName() + " has " + targetPokemon.getCurrentHP() + " HP left.";
-            }
 
-            if (targetPokemon.hasFainted) {
-                message = targetPokemon.getName() + " faints.";
+                if (result == 1) {
+                    message = this.getName() + " uses " + this.pokemonSkill.getSkillName() + " on " + targetPokemon.getName() +
+                            ". " + LINE_SEPARATOR + targetPokemon.getName() + " has " + targetPokemon.getCurrentHP() + " HP left.";
+                } else if (result == 2) {
+                    message = this.getName() + " uses " + this.pokemonSkill.getSkillName() + " on " + targetPokemon.getName() +
+                            ". It is super effective!" + LINE_SEPARATOR + targetPokemon.getName() + " has " + targetPokemon.getCurrentHP() + " HP left.";
+                } else {
+                    message = this.getName() + " uses " + this.pokemonSkill.getSkillName() + " on " + targetPokemon.getName() +
+                            ". It is not very effective..." + LINE_SEPARATOR + targetPokemon.getName() + " has " + targetPokemon.getCurrentHP() + " HP left.";
+                }
+
+                if (targetPokemon.hasFainted) {
+                    message = targetPokemon.getName() + " faints.";
+                }
             }
+            return message;
         }
-        return message;
-    }
+}
 }
