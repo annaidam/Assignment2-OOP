@@ -1,53 +1,105 @@
 package pokemontest;
 
 import assignment2.Item;
-import assignment2.Pokemon;
+import assignment2.ItemBag;
 import org.junit.jupiter.api.Test;
 
-import java.util.Locale;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
-public class Task6Test {
-
+public class Task7Test {
     @Test
-    public void shouldCreateValidItems(){
-        Locale.setDefault(Locale.ENGLISH);
+    public void shouldCreateValidItemStash(){
         Item potion = new Item("Potion", 20, 5.0);
-        Item superPotion = new Item("Super Potion", 60, 8.31235);
-        Item hyperPotion = new Item("Hyper Potion", 120, 10.77850);
+        Item superPotion = new Item("Super Potion", 40, 8.0);
 
-        assertEquals("Potion heals 20 HP. (5.00)"  , potion.toString());
-        assertEquals("Super Potion heals 60 HP. (8.31)"  , superPotion.toString());
-        assertEquals("Hyper Potion heals 120 HP. (10.77)", hyperPotion.toString());
+        ItemBag itemBag = new ItemBag(30.0);
+        assertEquals(0, itemBag.getNumOfItems());
+        assertEquals(0.0, itemBag.getCurrentWeight());
+        assertEquals(30.0, itemBag.getMaxWeight());
 
-        Item potionCopy = new Item("Potion", 20, 5.0);
-
-        assertEquals(potion, potionCopy);
-        assertNotEquals(potion, superPotion);
+        itemBag.addItem(potion);
+        itemBag.addItem(superPotion);
+        assertEquals(2, itemBag.getNumOfItems());
+        assertEquals(13.0, itemBag.getCurrentWeight());
+        assertEquals(30.0, itemBag.getMaxWeight());
     }
 
     @Test
-    public void shouldUseItemOnPokemon(){
-        Pokemon venusaur = new Pokemon("Venusaur", 200, "Grass");
-        venusaur.learnSkill("Solar Beam", 100, 50);
-        Pokemon magikarp = new Pokemon("Magikarp", 50, "Water");
+    public void shouldAddItemsCorrectly(){
+        Item potion1 = new Item("Potion", 20, 5.0);
+        Item potion2 = new Item("Potion", 20, 5.0);
+        Item potion3 = new Item("Potion", 20, 5.0);
 
-        venusaur.attack(magikarp);
-        assertEquals(0, magikarp.getCurrentHP());
-        magikarp.rest(); // should not rest.
-        assertEquals(0, magikarp.getCurrentHP());
+        Item hyperPotion = new Item("Hyper Potion", 50, 10.0);
+        Item superPotion = new Item("Super Potion", 40, 8.3);
 
-        Item potion = new Item("Potion", 30, 5.0);
-        assertEquals("Magikarp used Potion. It healed 30 HP.", magikarp.useItem(potion));
-        assertEquals(30, magikarp.getCurrentHP());
+        ItemBag itemBag = new ItemBag(30.0);
+        assertEquals(0, itemBag.addItem(potion1));
+        assertEquals(0, itemBag.addItem(potion2));
+        assertEquals(0, itemBag.addItem(hyperPotion));
+        assertEquals(1, itemBag.addItem(superPotion));
+        assertEquals(-1, itemBag.addItem(potion3));
 
-        assertEquals("Magikarp used Potion. It healed 20 HP.", magikarp.useItem(potion));
-        assertEquals(50, magikarp.getCurrentHP());
-
-        assertEquals("Magikarp could not use Potion. HP is already full.", magikarp.useItem(potion));
-        assertEquals(50, magikarp.getCurrentHP());
+        assertEquals(4, itemBag.getNumOfItems());
+        assertEquals(28.3, itemBag.getCurrentWeight());
     }
 
+    @Test
+    public void shouldPreserveOrder(){
+        Item potion1 = new Item("Potion", 20, 5.0);
+        Item potion2 = new Item("Potion", 20, 5.0);
+        Item hyperPotion = new Item("Hyper Potion", 50, 10.0);
+        Item superPotion = new Item("Super Potion", 40, 8.34867);
+
+        ItemBag itemBag = new ItemBag(30.0);
+        assertEquals(0, itemBag.addItem(hyperPotion));
+        assertEquals(1, itemBag.addItem(potion1));
+        assertEquals(1, itemBag.addItem(superPotion));
+        assertEquals(2, itemBag.addItem(potion2));
+
+        assertEquals("Hyper Potion heals 50 HP. (10.00)", itemBag.peekItemAt(0));
+        assertEquals("Super Potion heals 40 HP. (8.34)", itemBag.peekItemAt(1));
+        assertEquals("Potion heals 20 HP. (5.00)", itemBag.peekItemAt(2));
+        assertEquals("Potion heals 20 HP. (5.00)", itemBag.peekItemAt(3));
+
+        // indices outside bounds return null.
+        assertEquals("", itemBag.peekItemAt(5));
+        assertEquals("", itemBag.peekItemAt(-1));
+    }
+
+    @Test
+    public void shouldRemoveItemsByIndex(){
+        Item potion = new Item("Potion", 20, 5.0);
+        Item hyperPotion = new Item("Hyper Potion", 50, 10.0);
+        Item superPotion = new Item("Super Potion", 40, 8.0);
+
+        ItemBag itemBag = new ItemBag(15.0);
+        itemBag.addItem(potion);
+        itemBag.addItem(hyperPotion);
+        assertEquals(-1, itemBag.addItem(superPotion));
+        assertEquals(15.0, itemBag.getCurrentWeight());
+
+        assertEquals(hyperPotion, itemBag.removeItemAt(0));
+        assertNull(itemBag.removeItemAt(1));
+        assertEquals(0, itemBag.addItem(superPotion));
+        assertEquals(13.0, itemBag.getCurrentWeight());
+    }
+
+    @Test
+    public void shouldPopItem(){
+        Item hyperPotion = new Item("Hyper Potion", 50, 10.0);
+        Item superPotion = new Item("Super Potion", 40, 8.0);
+
+        ItemBag itemBag = new ItemBag(20.0);
+        itemBag.addItem(superPotion);
+        itemBag.addItem(hyperPotion);
+        assertEquals(hyperPotion, itemBag.popItem());
+        assertEquals(8.0, itemBag.getCurrentWeight());
+
+        assertEquals(superPotion, itemBag.popItem());
+        assertNull(itemBag.popItem());
+        assertEquals(0.0, itemBag.getCurrentWeight());
+        assertEquals(20.0, itemBag.getMaxWeight());
+    }
 }
