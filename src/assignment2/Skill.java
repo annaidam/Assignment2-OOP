@@ -28,36 +28,12 @@ public class Skill {
     }
 
     //Two skills are equal if they have the same names, APs and energy costs.
-
-    public boolean equalSkillName(Object anotherSkill) {
-        Skill otherSkill = (Skill) anotherSkill;
-        if (this.getSkillName().equals(otherSkill.getSkillName())) {
-            return true;
-        }
-        return false;
-    }
-
-    public boolean equalAttackPower(Object anotherSkill) {
-        Skill otherSkill = (Skill) anotherSkill;
-        if (this.getAttackPower() == otherSkill.getAttackPower()) {
-            return true;
-        }
-        return false;
-    }
-
-    public boolean equalEnergyCost(Object anotherSkill) {
-        Skill otherSkill = (Skill) anotherSkill;
-        if (this.getEnergyCost() == otherSkill.getEnergyCost()) {
-            return true;
-        }
-        return false;
-    }
     public boolean equals(Object anotherSkill) {
         if (anotherSkill == null) {
             return false;
         } else if (anotherSkill instanceof Skill) {
             Skill otherSkill = (Skill) anotherSkill;
-            if (equalSkillName(otherSkill) && (equalAttackPower(otherSkill)) && (equalEnergyCost(otherSkill))) {
+            if ((this.getSkillName().equals(otherSkill.getSkillName())) && (this.getAttackPower() == otherSkill.getAttackPower()) && (this.getEnergyCost() == otherSkill.getEnergyCost())) {
                 return true;
             } else {
                 return false;
