@@ -5,7 +5,7 @@ public class TypeCalc {
     public double damageValue;
 
     public TypeCalc(double damageValue){
-        damageValue=targetPokemon.getCurrentHP()-thisPokemon.getAttackPower();
+        //damageValue=targetPokemon.getCurrentHP()-thisPokemon.getAttackPower();
 
         if ((this.getType().equals("Water") && targetPokemon.getType().equals("Fire"))
                 | (this.getType().equals("Fire") && targetPokemon.getType().equals("Grass"))

@@ -202,7 +202,7 @@ public class Pokemon {
             if (targetPokemon.hasFainted) {
                 message = targetPokemon.getName() + " faints.";
             }
-        }
+
         return message;
     }
 }
