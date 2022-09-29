@@ -1,16 +1,4 @@
 package assignment2;
-
-/*
-Example:
-Item potion = new Item(“Potion”, 20, 15.3);
-Item hyperPotion = new Item(“Hyper Potion”, 50, 15.3);
-//Assume that Vulpix has 50 MAX HP, and is currently at HP = 0.
-System.out.println( vulpix.getHP() ) // HP = 0
-vulpix.useItem(potion);
-System.out.println( vulpix.getHP() ) // 0 + 20 = 20 HP
-vulpix.useItem(hyperPotion);
-System.out.println( vulpix.getHP() );
-// 20 + 50 = 50 HP - Vulpix’s HP cannot go beyond 50.*/
 public class Item {
     /* Pokemon can use items to heal their health points. Each item has a name, a healing power
     value (integer) and a weight (double). Once created, these values cannot be changed.*/
@@ -56,12 +44,17 @@ public class Item {
         }
     }
     /*When printing the weight, you must truncate the weight to a precision of two decimals.
-    Remember that truncating is not rounding.
-    Recommendations: You don’t need to use DecimalFormat or RoundPrecision to truncate.
-    You could also use the function String.format(...) similarly to
-    System.out.printf.*/
+    Remember that truncating is not rounding.*/
+    static double truncateNumber(double value, int decimals) {
+        value = value * Math.pow(10, decimals);
+        value = Math.floor(value);
+        value = value / Math.pow(10, decimals);
+        return value;
+    }
+
     public String toString() {
-        String item = this.getItemName() + " heals " + getHealing_power() + " HP. (" + (getItemWeight()%.2f) + ")";
+        int decimals = 2;
+        String item = this.getItemName() + " heals " + getHealing_power() + " HP. (" + truncateNumber(getItemWeight(), decimals) + ")";
         return item;
     }
 }
