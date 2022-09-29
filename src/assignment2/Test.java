@@ -12,6 +12,7 @@ public class Test {
         System.out.println(gyarados.attack(wigglytuff)); //120 - 100 = 20.
 
         wigglytuff.attack(gyarados); //100 - 40 = 60
+        String item = String.format(" heals " + gyarados.pokemonSkill.getAttackPower()%.2f);
 
 
         System.out.println(wigglytuff.getCurrentHP()); // expected 20
