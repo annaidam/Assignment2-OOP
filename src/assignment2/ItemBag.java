@@ -72,11 +72,11 @@ public class ItemBag {
         for (int i = 0; i < this.itemBag.size(); i++) {
             Item currentItem = itemBag.get(i);
             if (index == i) {
+                Item removedItem = itemBag.get(i);
+                removing = removedItem.toString();
                 itemBag.remove(i);
-                return removedItem = currentItem.toString();
-                if (currentItem.getItemWeight() > heaviestItem.getItemWeight()) {
-                    heaviestItem = currentItem;
-                }
+            } else if (index < 0 | index > (this.itemBag.size() - 1)) {
+                removing = null;
             }
         }
         return removedItem = null;
