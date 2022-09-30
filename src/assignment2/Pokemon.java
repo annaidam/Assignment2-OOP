@@ -183,28 +183,28 @@ public class Pokemon {
             targetPokemon.receiveDamage((int) damage);
 
             //avoiding massive repetition
-            String message1 = this.getName() + " uses " + this.pokemonSkill.getSkillName() + " on " + targetPokemon.getName() + ".";
-            String message2 = targetPokemon.getName() + " has " + targetPokemon.getCurrentHP() + " HP left.";
+            String usingASkill = this.getName() + " uses " + this.pokemonSkill.getSkillName() + " on " + targetPokemon.getName() + ".";
+            String HPLeft = targetPokemon.getName() + " has " + targetPokemon.getCurrentHP() + " HP left.";
             String faintMessage = " " + targetPokemon.getName() + " faints.";
-            outcome = message1 + END_OF_LINE + message2;
+            outcome = usingASkill + END_OF_LINE + HPLeft;
 
             if (result == 1) {
                 if (targetPokemon.hasFainted) {
-                    return outcome = outcome + faintMessage;
+                    outcome = outcome + faintMessage;
                 } else {
-                    return  outcome;
+                    outcome = outcome;
                 }
             } else if (result == 2) {
                 if (targetPokemon.hasFainted) {
-                    return outcome = message1 + TypeCalc.superEffective() + END_OF_LINE + message2 + faintMessage;
+                    outcome = usingASkill + TypeCalc.superEffective() + END_OF_LINE + HPLeft + faintMessage;
                 } else {
-                    outcome = message1 + TypeCalc.superEffective() + END_OF_LINE + message2;
+                    outcome = usingASkill + TypeCalc.superEffective() + END_OF_LINE + HPLeft;
                 }
             } else {
                 if (targetPokemon.hasFainted) {
-                    return outcome = message1 + TypeCalc.notVeryEffective() + END_OF_LINE + message2 + faintMessage;
+                    outcome = usingASkill + TypeCalc.notVeryEffective() + END_OF_LINE + HPLeft + faintMessage;
                 } else {
-                    return outcome = message1 + TypeCalc.notVeryEffective() + END_OF_LINE + message2;
+                    outcome = usingASkill + TypeCalc.notVeryEffective() + END_OF_LINE + HPLeft;
                 }
             }
         }
