@@ -43,7 +43,6 @@ public class ItemBag {
     [ (PX, 20, 5.3), (PY, 40, 4.5), (P1, 20, 4.5), (P2, 20, 4.5),
     (P3, 20, 2.2)]*/
     public int addItem(Item newItem) {
-        itemBag.add(newItem);
         for (int i = 0; i < this.itemBag.size(); i++) {
             Item currentItem = itemBag.get(i);
             //Item heaviestItem = itemBag.get(0);
