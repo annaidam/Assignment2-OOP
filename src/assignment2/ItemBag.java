@@ -18,11 +18,11 @@ public class ItemBag {
     /*The bag should provide: the current number of items stored, the current weight of the bag,
     and its maximum weight. Other operations are defined below.*/
     public int getNumOfItems() {
-        int sizeOfBag = 0;
         if (this.itemBag.isEmpty()) {
-            return sizeOfBag;
+            return 0;
         } else {
-            return sizeOfBag = this.itemBag.size();
+            int sizeOfBag = this.itemBag.size();
+            return sizeOfBag;
         }
     }
 
@@ -37,46 +37,6 @@ public class ItemBag {
     }
 
     public double getMaxWeight() {return this.maxBagWeight;}
-
-    public void sortTheBag() {
-        if (!this.itemBag.isEmpty()) {
-            int length = itemBag.size();
-            if (length > 1) {
-                for (int i = 0; i < length; i++) {
-                    Item currentItem1 = this.itemBag.get(i);
-                    for (int j = i + 1; j < length; j++) {
-                        Item currentItem2 = this.itemBag.get(j);
-                        if (currentItem1.getItemWeight() < currentItem2.getItemWeight()) {
-                            Item x = currentItem1;
-                            currentItem1 = currentItem2;
-                            currentItem2 = x;
-                            //itemBag.add(itemBag.indexOf(currentItem1), currentItem2);
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-/*
-    public void sortTheBag() {
-        for (int i = 0; i < this.itemBag.size(); i++) {
-            Item currentItem1 = itemBag.get(i);
-            for (int j = i + 1; j < this.itemBag.size(); j++) {
-                Item currentItem2 = itemBag.get(j);
-                Item newItem;
-                Item oldItem;
-                if (currentItem1.getItemWeight() < currentItem2.getItemWeight()) {
-                    x = this.oldItem(i);
-                    this.oldItem(i) = this.newItem(j);
-                    this.oldItem(j) = x;
-                }
-            }
-        }
-    }
-
-
- */
 
     /*7.1 - Adding items to the bag:
     The collection of items can accept repeated items and the items are stored in a specific
@@ -93,6 +53,36 @@ PROCEDURE LINEAR_SEARCH (LIST, VALUE)
   END FOR
 END PROCEDURE*/
 
+
+    public int addItem(Item newItem) {
+        //adding a new item
+        itemBag.add(newItem);
+        //if bag is empty, we place the item in the first slot
+        if (this.itemBag.isEmpty()) {
+            itemBag.set(0, newItem);
+        //if after adding the item, the bag's weight exceeds the max bag weight,
+        //we remove the added item and return its index BUT because in the example
+        //the removed item is equal to other two items added, this will get the index
+        //of the equal item, not the item we removed
+        } else if (this.currentBagWeight >= this.maxBagWeight) {
+            itemBag.remove(newItem);
+            return itemBag.indexOf(newItem);
+        //after adding the item, we calculate its right place
+        } else {
+            int length = itemBag.size();
+            for (int i = 0; i < length; i++) {
+                for (int j = length - 1; j > i; j--) {
+                    if (itemBag.get(i).getItemWeight() < itemBag.get(j).getItemWeight()) {
+                        Item temporary = itemBag.get(i);
+                        itemBag.set(i, itemBag.get(j));
+                        itemBag.set(j, temporary);
+                    }
+                }
+            }
+        }
+        return itemBag.indexOf(newItem);
+    }
+    /*
     public int addItem(Item newItem) {
         if (itemBag.isEmpty()) {
             itemBag.add(0, newItem);
@@ -109,6 +99,7 @@ END PROCEDURE*/
         return indexOfNewItem;
     }
 
+*/
     /*public int addItem(Item newItem) {
         sortTheBag();
         int indexOfNewItem;
@@ -150,7 +141,6 @@ END PROCEDURE*/
                 removing = null;
             }
         }
-        sortTheBag();
         return removing;
     }
 
