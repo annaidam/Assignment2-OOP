@@ -44,6 +44,79 @@ public class Pokemon {
 
     /*Two pokemons are equal if they have the same name, type, skill, HP, MAX HP, and EP.
     When printed, the pokemon should return one of two options below:*/
+
+    /*
+    public boolean equalName(Object anotherPokemon) {
+        Pokemon otherPokemon = (Pokemon) anotherPokemon;
+        if (this.getName().equals(otherPokemon.getName()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean equalType(Object anotherPokemon) {
+        Pokemon otherPokemon = (Pokemon) anotherPokemon;
+        if (this.pokemonType.equals(otherPokemon.pokemonType) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean equalCurrentHP(Object anotherPokemon) {
+        Pokemon otherPokemon = (Pokemon) anotherPokemon;
+        if (this.currentHP == otherPokemon.getCurrentHP) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean equalMaxHP(Object anotherPokemon) {
+        Pokemon otherPokemon = (Pokemon) anotherPokemon;
+        if (this.MAX_HP == MAX_HP) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean equalEnergyPoints(Object anotherPokemon) {
+        Pokemon otherPokemon = (Pokemon) anotherPokemon;
+        if (this.energyPoints == otherPokemon.getEnergyPoints) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean equalSkills(Object anotherPokemon) {
+        Pokemon otherPokemon = (Pokemon) anotherPokemon;
+        if (!this.knowsSkill && !otherPokemon.knowsSkill) {
+                return true;
+            }
+        } else if (this.knowsSkill && otherPokemon.knowsSkill) {
+            if (this.pokemonSkill.equals(otherPokemon.pokemonSkill)) {
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    public boolean equals(Object anotherPokemon) {
+        if (anotherPokemon == null) {
+            return false;
+        } else if (anotherPokemon instanceof Pokemon) {
+            Pokemon otherPokemon = (Pokemon) anotherPokemon;
+            if (equalName(anotherPokemon) && equalType(anotherPokemon) && equalCurrentHP(anotherPokemon) && equalMaxHP(anotherPokemon) && equalEnergyPoints(anotherPokemon) && equalSkills(anotherPokemon)) {
+                return true;
+            }
+        }
+        return false;
+    }
+     */
     public boolean equals(Object anotherPokemon) {
         if (anotherPokemon == null) {
             return false;

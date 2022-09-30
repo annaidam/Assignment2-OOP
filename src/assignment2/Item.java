@@ -32,6 +32,47 @@ public class Item {
 
     /*Two items are equals if they have the same name, healing power and weight values. When
     printed, an item should return "<item name> heals <heal power> HP. (<weight>)"*/
+
+    /*
+    public boolean equalItemName(Object anotherItem) {
+        Item otherItem = (Item) anotherItem;
+        if (this.getItemName().equals(otherItem.getItemName()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean equalHealingPower(Object anotherItem) {
+        Item otherItem = (Item) anotherItem;
+        if (this.getHealingPower() == otherItem.getHealingPower()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean equalItemWeight(Object anotherItem) {
+        Item otherItem = (Item) anotherItem;
+        if (this.getItemWeight == otherItem.getItemWeight) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean equals(Object anotherItem {
+        if (anotherItem == null) {
+            return false;
+        } else if (anotherItem instanceof Item) {
+            Item otherItem = (Item) anotherItem;
+            if (equalItemName(anotherItem) && equalHealingPower(anotherItem) && equalItemWeight(anotherItem) {
+                return true;
+            }
+        }
+        return false;
+    }
+     */
     public boolean equals(Object anotherItem) {
         if (anotherItem == null) {
             return false;
