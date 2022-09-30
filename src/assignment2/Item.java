@@ -1,4 +1,7 @@
 package assignment2;
+
+import java.text.DecimalFormat;
+
 public class Item {
     /* Pokemon can use items to heal their health points. Each item has a name, a healing power
     value (integer) and a weight (double). Once created, these values cannot be changed.*/
@@ -50,8 +53,7 @@ public class Item {
     }
 
     public String toString() {
-        int decimals = 2;
-        String item = this.getItemName() + " heals " + getHealing_power() + " HP. (" + truncateNumber(getItemWeight(), decimals) + ")";
+        String item = this.getItemName() + " heals " + this.getHealing_power() + " HP. (" + this.truncateWeight() + ")";
         return item;
     }
 }
