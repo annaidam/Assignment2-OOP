@@ -42,7 +42,7 @@ public class ItemBag {
     // after adding (PY, 40, 4.5) - placed at index 1
     [ (PX, 20, 5.3), (PY, 40, 4.5), (P1, 20, 4.5), (P2, 20, 4.5),
     (P3, 20, 2.2)]*/
-    public void addItem(Item newItem) {
+    public int addItem(Item newItem) {
         itemBag.add(newItem);
         for (int i = 0; i < this.itemBag.size(); i++) {
             Item currentItem = itemBag.get(i);
@@ -51,6 +51,8 @@ public class ItemBag {
                 heaviestItem = currentItem;
             }
         }
+        int index = itemBag.indexOf(newItem);
+        return index;
     }
 
     /*7.2 - Removing items:
