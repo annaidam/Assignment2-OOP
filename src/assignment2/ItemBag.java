@@ -10,7 +10,7 @@ public class ItemBag {
     private double currentBagWeight = 0;
     ArrayList<Item> itemBag = new ArrayList<>();
 
-    ItemBag(double maxBagWeight) {
+    public ItemBag(double maxBagWeight) {
         this.maxBagWeight = maxBagWeight;
     }
 

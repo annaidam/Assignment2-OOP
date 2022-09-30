@@ -33,7 +33,7 @@ public class TypeCalc {
     }
 
     public static String notVeryEffective() {
-        String notVeryEffective = "It is not very effective...";
+        String notVeryEffective = " It is not very effective...";
         return notVeryEffective;
     }
 }

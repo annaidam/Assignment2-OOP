@@ -43,13 +43,10 @@ public class Item {
             return false;
         }
     }
-    /*When printing the weight, you must truncate the weight to a precision of two decimals.
-    Remember that truncating is not rounding.*/
-    static double truncateNumber(double value, int decimals) {
-        value = value * Math.pow(10, decimals);
-        value = Math.floor(value);
-        value = value / Math.pow(10, decimals);
-        return value;
+
+    public String truncateWeight() {
+        String truncatedWeight = String.format("%.2f", Math.floor((Math.pow(10,2) * this.getItemWeight())) / Math.pow(10,2));
+        return truncatedWeight;
     }
 
     public String toString() {

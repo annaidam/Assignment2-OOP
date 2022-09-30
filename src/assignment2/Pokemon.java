@@ -122,13 +122,13 @@ public class Pokemon {
 
     //3.3 - Spend and Recover Energy Points:
     public void spendEP(int EC) {
-        if (this.energyPoints >= EC) {
+       // if (this.energyPoints >= EC) {
             this.energyPoints -= EC;
             if (this.energyPoints < MIN_VALUE) {
                 this.energyPoints = MIN_VALUE;
             }
         }
-    }
+    //}
 
     public void recoverEnergy() {
         int bonusEnergyPoints = 25;
@@ -178,7 +178,7 @@ public class Pokemon {
             targetPokemon.receiveDamage((int) damage);
 
             //avoiding massive repetition
-            String message1 = this.getName() + " uses " + this.pokemonSkill.getSkillName() + " on " + targetPokemon.getName() + ". ";
+            String message1 = this.getName() + " uses " + this.pokemonSkill.getSkillName() + " on " + targetPokemon.getName() + ".";
             String message2 = targetPokemon.getName() + " has " + targetPokemon.getCurrentHP() + " HP left.";
             outcome = message1 + END_OF_LINE + message2;
 
