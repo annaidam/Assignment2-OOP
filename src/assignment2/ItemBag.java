@@ -67,22 +67,32 @@ public class ItemBag {
     public String removeItemAt(int index) {
         //remove an item based on specified index
         //automatically reorganise the items in the bag
-        String removedItem = "";
+        String removedItem = null;
+        Item heaviestItem = itemBag.get(0);
+        for (int i = 0; i < this.itemBag.size(); i++) {
+            Item currentItem = itemBag.get(i);
+            if (index == i) {
+                itemBag.remove(i);
+                return removedItem = currentItem.toString();
+                if (currentItem.getItemWeight() > heaviestItem.getItemWeight()) {
+                    heaviestItem = currentItem;
+                }
+            }
+        }
+        return removedItem = null;
+    }
+
+    /*
+    public reOrderTheBag() {
         for (int i = 0; i < this.itemBag.size(); i++) {
             Item currentItem = itemBag.get(i);
             Item heaviestItem = itemBag.get(0);
-            if (index == i) {
-                itemBag.remove(i);
-                removedItem = currentItem.toString();
-            } else {
-                removedItem = null;
-            }
             if (currentItem.getItemWeight() > heaviestItem.getItemWeight()) {
-                heaviestItem = currentItem;
+            heaviestItem = currentItem;
+                    }
+                }
             }
-        }
-        return removedItem;
-    }
+     */
 
     /*7.3 - Peeking at items:
     A user can peek at the item in a specific position in the bag. The bag should not provide a
