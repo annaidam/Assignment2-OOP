@@ -17,7 +17,7 @@ public class Pokemon {
     public Pokemon(String name, int MAX_HP, String pokemonType) {
         this.name = name;
         this.MAX_HP = MAX_HP;
-        this.energyPoints = MAX_HP;
+        this.energyPoints = MAX_VALUE;
         this.currentHP = MAX_HP;
         this.pokemonType = pokemonType;
     }
@@ -96,7 +96,9 @@ public class Pokemon {
 
     //3.2  - Receive Damage and Rest:
     public void hasFainted() {
-        this.hasFainted = true;
+        if (this.currentHP == 0) {
+            this.hasFainted = true;
+        }
     }
 
     public void receiveDamage(int damageValue) {
@@ -142,14 +144,17 @@ public class Pokemon {
 
     public String useItem(Item item) {
         String useItem;
+        int healingAmount = 0;
         if (this.getCurrentHP() == this.getMAX_HP()) {
             useItem = this.getName() + " could not use " + item.getItemName() + ". HP is already full.";
         } else {
+            int oldHP = this.currentHP;
             this.currentHP += item.getHealing_power();
             if (currentHP > MAX_HP) {
                 currentHP = MAX_HP;
             }
-            useItem = this.getName() + " used " + item.getItemName() + ". It healed " + (this.getCurrentHP() - item.getHealing_power()) + " HP.";
+            healingAmount = this.currentHP - oldHP;
+            useItem = this.getName() + " used " + item.getItemName() + ". It healed " + healingAmount + " HP.";
         }
         return useItem;
     }
@@ -180,17 +185,27 @@ public class Pokemon {
             //avoiding massive repetition
             String message1 = this.getName() + " uses " + this.pokemonSkill.getSkillName() + " on " + targetPokemon.getName() + ".";
             String message2 = targetPokemon.getName() + " has " + targetPokemon.getCurrentHP() + " HP left.";
+            String faintMessage = " " + targetPokemon.getName() + " faints.";
             outcome = message1 + END_OF_LINE + message2;
 
             if (result == 1) {
-                return outcome;
+                if (targetPokemon.hasFainted) {
+                    return outcome = outcome + faintMessage;
+                } else {
+                    return  outcome;
+                }
             } else if (result == 2) {
-                outcome = message1 + TypeCalc.superEffective() + END_OF_LINE + message2;
+                if (targetPokemon.hasFainted) {
+                    return outcome = message1 + TypeCalc.superEffective() + END_OF_LINE + message2 + faintMessage;
+                } else {
+                    outcome = message1 + TypeCalc.superEffective() + END_OF_LINE + message2;
+                }
             } else {
-                outcome = message1 + TypeCalc.notVeryEffective() + END_OF_LINE + message2;
-            }
-            if (targetPokemon.hasFainted) {
-                outcome = outcome + targetPokemon.getName() + " faints.";
+                if (targetPokemon.hasFainted) {
+                    return outcome = message1 + TypeCalc.notVeryEffective() + END_OF_LINE + message2 + faintMessage;
+                } else {
+                    return outcome = message1 + TypeCalc.notVeryEffective() + END_OF_LINE + message2;
+                }
             }
         }
         return outcome;
