@@ -28,7 +28,7 @@ public class TypeCalc {
     }
 
     public static String superEffective() {
-        String superEffective = "It is super effective!";
+        String superEffective = " It is super effective!";
         return superEffective;
     }
 
