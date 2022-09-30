@@ -46,9 +46,12 @@ public class ItemBag {
         itemBag.add(newItem);
         for (int i = 0; i < this.itemBag.size(); i++) {
             Item currentItem = itemBag.get(i);
-            Item heaviestItem = itemBag.get(0);
-            if (currentItem.getItemWeight() > heaviestItem.getItemWeight()) {
-                heaviestItem = currentItem;
+            //Item heaviestItem = itemBag.get(0);
+            if (currentItem.getItemWeight() > newItem.getItemWeight()) {
+                //heaviestItem = currentItem;
+                itemBag.add(i + 1, newItem);
+            } else if (currentItem.getItemWeight() < newItem.getItemWeight()) {
+                itemBag.add(i - 1, newItem);
             }
         }
         int index = itemBag.indexOf(newItem);
