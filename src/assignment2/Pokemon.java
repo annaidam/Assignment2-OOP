@@ -192,7 +192,7 @@ public class Pokemon {
                 if (targetPokemon.hasFainted) {
                     outcome = outcome + faintMessage;
                 } else {
-                    outcome = outcome;
+                    return outcome;
                 }
             } else if (result == 2) {
                 if (targetPokemon.hasFainted) {
