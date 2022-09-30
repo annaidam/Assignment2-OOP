@@ -11,7 +11,8 @@ public class Pokemon {
     private boolean hasFainted = false;
     private boolean knowsSkill = false;
     final String END_OF_LINE = System.lineSeparator();
-    final int minValue = 0;
+    final int MIN_VALUE = 0;
+    final int MAX_VALUE = 100;
 
     public Pokemon(String name, int MAX_HP, String pokemonType) {
         this.name = name;
@@ -100,9 +101,8 @@ public class Pokemon {
 
     public void receiveDamage(int damageValue) {
         this.currentHP -= damageValue;
-
-        if (this.currentHP <= minValue) {
-            this.currentHP = minValue;
+        if (this.currentHP <= MIN_VALUE) {
+            this.currentHP = MIN_VALUE;
             if (!this.hasFainted) {
                 hasFainted();
             }
@@ -124,31 +124,22 @@ public class Pokemon {
     public void spendEP(int EC) {
         if (this.energyPoints >= EC) {
             this.energyPoints -= EC;
-            if (this.energyPoints < minValue) {
-                this.energyPoints = minValue;
+            if (this.energyPoints < MIN_VALUE) {
+                this.energyPoints = MIN_VALUE;
             }
         }
     }
 
     public void recoverEnergy() {
-
         int bonusEnergyPoints = 25;
         if (!this.hasFainted) {
             this.energyPoints += bonusEnergyPoints; //pokemon can recover energy where a fixed amount of 25 EP is restored.
-            if (this.energyPoints > this.MAX_HP) {  //EP can never be less than zero or greater than 100
-                this.energyPoints = this.MAX_HP;
+            if (this.energyPoints > MAX_VALUE) {  //EP can never be less than zero or greater than 100
+                this.energyPoints = MAX_VALUE;
             }
         }
     }
 
-    /*When a pokemon uses an Item, it increases its HP for the corresponding healing power
-    even if the pokemon has fainted. Note that the HP should never go above the MAX HP.
-    Whenever an item heals a pokemon over the MAX HP, the pokemon’s HP should be its MAX
-    HP.*/
-    /*: If the pokemon has full HP before using the item:
-    “<poke name> could not use <item name>. HP is already full.”
-    2: If the pokemon recovers health when using the item:
-    “<poke name> used <item name>. It healed <amount healed> HP.”*/
     public String useItem(Item item) {
         String useItem;
         if (this.getCurrentHP() == this.getMAX_HP()) {
@@ -158,8 +149,7 @@ public class Pokemon {
             if (currentHP > MAX_HP) {
                 currentHP = MAX_HP;
             }
-            useItem = this.getName() + " used " + item.getItemName() + ". It healed "
-                    + (this.getCurrentHP() - item.getHealing_power()) + " HP.";
+            useItem = this.getName() + " used " + item.getItemName() + ". It healed " + (this.getCurrentHP() - item.getHealing_power()) + " HP.";
         }
         return useItem;
     }
