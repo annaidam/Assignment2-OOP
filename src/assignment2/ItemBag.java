@@ -94,6 +94,8 @@ public class ItemBag {
         public int addItem(Item newItem) {
             if (this.itemBag.isEmpty()) {
                 itemBag.add(0, newItem);
+                return 0;
+            }
             int length = itemBag.size();
 
             if(this.currentBagWeight < this.maxBagWeight){
@@ -101,13 +103,16 @@ public class ItemBag {
                 if(newItem.getItemWeight() > itemBag.get(i).getItemWeight()){
                 itemBag.add(itemBag.indexOf(itemBag.get(i)), newItem);
                 length = length + 1;
-                this.currentBagWeight = this.currentBagWeight + newItem.getItemWeight();
+                this.currentBagWeight = this.currentBagWeight + newItem.getWeight();
                  }
-              }
+
             }
             return itemBag.indexOf(newItem);
         }
-
+// we need to replace getItemWeight () with getWeight(), but we cannot access getWeight() because it's in another class
+    // therefore, we need to refactor
+    //also, we might have an infinite loop
+    //otherwise, the method should work, I checked with Michal
 
     /*7.2 - Removing items:
     The only way to retrieve a reference to an item in the bag is to remove it. Items are removed
