@@ -93,21 +93,17 @@ public class ItemBag {
         */
         public int addItem(Item newItem) {
             if (this.itemBag.isEmpty()) {
-                itemBag.add(newItem);
-
+                itemBag.add(0, newItem);
             int length = itemBag.size();
+
             if(this.currentBagWeight < this.maxBagWeight){
             for (int i = 0; i < length; i++)
                 if(newItem.getItemWeight() > itemBag.get(i).getItemWeight()){
-                //if(current item weight > item weight at index i)
-                    //add(index i, current item)
-
                 itemBag.add(itemBag.indexOf(itemBag.get(i)), newItem);
                 length = length + 1;
                 this.currentBagWeight = this.currentBagWeight + newItem.getItemWeight();
-
-        }
-        }
+                 }
+              }
             }
             return itemBag.indexOf(newItem);
         }
