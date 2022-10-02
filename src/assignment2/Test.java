@@ -17,11 +17,5 @@ public class Test {
 
         System.out.println(wigglytuff.getCurrentHP()); // expected 20
         System.out.println(gyarados.getCurrentHP()); // expected 60
-
-//        assertEquals(120, wigglytuff.getMAX_HP());
-//        assertEquals(20, wigglytuff.getCurrentHP());
-//
-//        assertEquals(100, gyarados.getMAX_HP());
-//        assertEquals(60, gyarados.getCurrentHP());
     }
 }

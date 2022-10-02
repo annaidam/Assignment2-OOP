@@ -84,7 +84,6 @@ public class Skill {
         }
     }
 
-    //When printed, a skill should return: “<skill name> - AP: <ap> EC: <ec>".
     public String toString() {
         String skill = this.getSkillName() + " - AP: " + this.getAttackPower() + " EC: " + this.getEnergyCost();
         return skill;

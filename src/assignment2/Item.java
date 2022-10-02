@@ -1,8 +1,6 @@
 package assignment2;
 
 public class Item {
-    /* Pokemon can use items to heal their health points. Each item has a name, a healing power
-    value (integer) and a weight (double). Once created, these values cannot be changed.*/
     private String name;
     private int healing_power;
     private double weight;

@@ -1,21 +1,18 @@
 package assignment2;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 
 public class ItemBag {
-    /*An item bag has a maximum weight defined when creating the bag.
-    The bag also stores a collection of items that begins empty when creating the bag.
-    The maximum weight cannot change once the bag is created. You don’t need to write code to check if two bags are equal.*/
     private double maxBagWeight;
-    private double currentBagWeight = 0;
+    private double currentBagWeight;
     ArrayList<Item> itemBag = new ArrayList<>();
 
     public ItemBag(double maxBagWeight) {
         this.maxBagWeight = maxBagWeight;
     }
 
-    /*The bag should provide: the current number of items stored, the current weight of the bag,
-    and its maximum weight. Other operations are defined below.*/
     public int getNumOfItems() {
         if (this.itemBag.isEmpty()) {
             return 0;
@@ -27,12 +24,15 @@ public class ItemBag {
 
     public double getCurrentWeight() {
         //find the weight of each item and sum them up
+        currentBagWeight = 0;
         if (!this.itemBag.isEmpty()) {
             for (Item currentItem : itemBag) {
-                currentBagWeight = (currentBagWeight + currentItem.getWeight());
+                currentBagWeight += currentItem.getWeight();
             }
         }
-        return this.currentBagWeight;
+        BigDecimal bd = new BigDecimal(currentBagWeight).setScale(2, RoundingMode.HALF_UP);
+        double result = bd.doubleValue();
+        return result;
     }
 
     public double getMaxWeight() {return this.maxBagWeight;}
@@ -64,49 +64,50 @@ public class ItemBag {
     public Item removeItemAt(int index) {
         //remove an item based on specified index
         //automatically reorganise the items in the bag
-        String removing = "";
+        Item removedItem;
         for (int i = 0; i < this.itemBag.size(); i++) {
             if (index == i) {
-                Item removedItem = itemBag.get(i);
-                removing = removedItem.toString();
+                removedItem = itemBag.get(i);
+                currentBagWeight -= removedItem.getWeight();
                 itemBag.remove(i);
-            } else if (index < 0 | index > (this.itemBag.size() - 1)) {
-                removing = null;
+                for (int j = this.itemBag.size() - 1; j < i; j--) {
+                    if (itemBag.get(i).getWeight() < itemBag.get(j).getWeight()) {
+                        Item temporary = itemBag.get(i);
+                        itemBag.set(i, itemBag.get(j));
+                        itemBag.set(j, temporary);
+                    }
+                }
+                return removedItem;
             }
         }
-        return removing;
+        return null;
     }
 
-    /*7.3 - Peeking at items:
-    A user can peek at the item in a specific position in the bag. The bag should not provide a
-    reference to the actual item. Instead, the bag returns a string representation of the item
-    according to what has been specified in Task X.*/
     public String peekItemAt(int index) {
         String peeking = "";
+        boolean inBounds = (index >= 0) && (index < itemBag.size());
         for (int i = 0; i < this.itemBag.size(); i++) {
             Item currentItem = itemBag.get(i);
             if (index == i) {
                 peeking = currentItem.toString();
             }
         }
+        if (!inBounds) {
+            return "";
+        }
         return peeking;
     }
 
-    /*7.4 - Popping items:
-    A user can retrieve the heaviest item in the bag. This means that the bag should remove
-    and return a reference to its first item. Typically, this operation is named ‘pop’. If the bag is
-    empty, popping should return null.*/
-    public String popItem() {
+    public Item popItem() {
         //find the heaviest item in the bag ie. the first ite
         //if bag is empty popping returns to null
-        String message = "";
+        Item heaviestItem;
         if (!itemBag.isEmpty()) {
-            Item heaviestItem = itemBag.get(0);
-            message = heaviestItem.toString();
+            heaviestItem = itemBag.get(0);
             itemBag.remove(0);
         } else {
             return null;
         }
-        return message;
+        return heaviestItem;
     }
 }
