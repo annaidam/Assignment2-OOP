@@ -44,7 +44,7 @@ public class Pokemon {
 
     public boolean equalName(Object anotherPokemon) {
         Pokemon otherPokemon = (Pokemon) anotherPokemon;
-        if (this.getName().equals(otherPokemon.getName()) {
+        if (this.getName().equals(otherPokemon.getName())) {
             return true;
         } else {
             return false;
@@ -53,7 +53,7 @@ public class Pokemon {
 
     public boolean equalType(Object anotherPokemon) {
         Pokemon otherPokemon = (Pokemon) anotherPokemon;
-        if (this.pokemonType.equals(otherPokemon.pokemonType) {
+        if (this.pokemonType.equals(otherPokemon.pokemonType)) {
             return true;
         } else {
             return false;
@@ -62,7 +62,7 @@ public class Pokemon {
 
     public boolean equalCurrentHP(Object anotherPokemon) {
         Pokemon otherPokemon = (Pokemon) anotherPokemon;
-        if (this.currentHP == otherPokemon.getCurrentHP) {
+        if (this.currentHP == otherPokemon.currentHP) {
             return true;
         } else {
             return false;
@@ -80,7 +80,7 @@ public class Pokemon {
 
     public boolean equalEnergyPoints(Object anotherPokemon) {
         Pokemon otherPokemon = (Pokemon) anotherPokemon;
-        if (this.energyPoints == otherPokemon.getEnergyPoints) {
+        if (this.energyPoints == otherPokemon.energyPoints) {
             return true;
         } else {
             return false;
@@ -90,12 +90,12 @@ public class Pokemon {
     public boolean equalSkills(Object anotherPokemon) {
         Pokemon otherPokemon = (Pokemon) anotherPokemon;
         if (!this.knowsSkill && !otherPokemon.knowsSkill) {
-                return true;
-            }
+            return true;
         } else if (this.knowsSkill && otherPokemon.knowsSkill) {
             if (this.pokemonSkill.equals(otherPokemon.pokemonSkill)) {
                 return true;
             }
+            return false;
         } else {
             return false;
         }
@@ -113,28 +113,6 @@ public class Pokemon {
         }
         return false;
     }
-     */
-    public boolean equals(Object anotherPokemon) {
-        if (anotherPokemon == null) {
-            return false;
-        } else if (anotherPokemon instanceof Pokemon) {
-            Pokemon otherPokemon = (Pokemon) anotherPokemon;
-            if (!this.knowsSkill && !otherPokemon.knowsSkill) {
-                if ((this.name.equals(otherPokemon.name)) &&
-                        (this.pokemonType.equals(otherPokemon.pokemonType)) &&
-                        (this.currentHP == otherPokemon.currentHP) &&
-                        (this.MAX_HP == otherPokemon.MAX_HP) &&
-                        (this.energyPoints == otherPokemon.energyPoints)) {
-                    return true;
-                }
-            } else if (this.knowsSkill && otherPokemon.knowsSkill) {
-                if (this.pokemonSkill.equals(otherPokemon.pokemonSkill)) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
 
     public String toString() {
         String pokemon;
@@ -146,7 +124,6 @@ public class Pokemon {
         return pokemon;
     }
 
-    //3.1 - Learn and Forget Skills:
     public void learnSkill(String name, int attackPower, int energyCost) {
         this.pokemonSkill = new Skill(name, attackPower, energyCost);
     }
@@ -192,15 +169,12 @@ public class Pokemon {
         }
     }
 
-    //3.3 - Spend and Recover Energy Points:
     public void spendEP(int EC) {
-       // if (this.energyPoints >= EC) {
-            this.energyPoints -= EC;
-            if (this.energyPoints < MIN_VALUE) {
-                this.energyPoints = MIN_VALUE;
-            }
+        this.energyPoints -= EC;
+        if (this.energyPoints < MIN_VALUE) {
+            this.energyPoints = MIN_VALUE;
         }
-    //}
+    }
 
     public void recoverEnergy() {
         int bonusEnergyPoints = 25;
@@ -229,7 +203,6 @@ public class Pokemon {
         return useItem;
     }
 
-    //Task 5: Pokemon Battle
     public String attack(Pokemon targetPokemon) {
         String outcome;
         //checking if the attacker pokemon is able to attack
@@ -245,7 +218,7 @@ public class Pokemon {
             //explaining the matrix relation with the types
             Type enumAttacker = Type.valueOf(this.getType().toUpperCase());
             Type enumDefender = Type.valueOf(targetPokemon.getType().toUpperCase());
-            double result = TypeCalc.getFactorValue(enumAttacker.pokemonIndex, enumDefender.pokemonIndex);
+            double result = TypeCalc.getAdvantageMultiplier(enumAttacker.pokemonIndex, enumDefender.pokemonIndex);
 
             // explaining the damage
             spendEP(this.pokemonSkill.getEnergyCost());

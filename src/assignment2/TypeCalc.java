@@ -1,27 +1,20 @@
 package assignment2;
 
 public class TypeCalc {
-    //for this matrix we got help
-    /*final static double[][] EFFECTIVE_MATRIX = {
-            {1, 1, 1, 1},
-            {1, 0.5, 0.5, 2},
-            {1, 2, 0.5, 0.5},
-            {1, 0.5, 2, 0.5}
-    };*/
-
-    final static double[][] EFFECTIVE_MATRIX = {
+    //we got some help from a classmate to use the matrix before working on task 8
+    final static double[][] TYPE_ADVANTAGE = {
             {1, 1, 1, 1, 1, 1, 1, 1},
             {1, 1, 1, 1, 0.5, 2, 1, 1},
             {1, 1, 2, 1, 1, 1, 1, 1},
             {1, 1, 0.5, 0.5, 1, 0.5, 1, 2},
-            {1, 2, 0.5, 1, 1, 2, 2, 0.5},
-            {1, 0.5, 0.5, 1, 1, 0.5, 1, 2},
-            {1, 1, 2, 1, 1, 2, 1, 0.5},
-            {1, 1, 0.5, 1, 1, 0.5, 1, 0.5}
+            {1, 2, 0.5, 1, 0.5, 2, 2, 0.5},
+            {1, 0.5, 0.5, 1, 0.5, 0.5, 1, 2},
+            {1, 1, 2, 1, 0.5, 2, 0.5, 0.5},
+            {1, 1, 0.5, 1, 2, 0.5, 1, 0.5}
     };
 
-    public static double getFactorValue(int rowIndex, int columnIndex) {
-        return EFFECTIVE_MATRIX[rowIndex][columnIndex];
+    public static double getAdvantageMultiplier(int rowIndex, int columnIndex) {
+        return TYPE_ADVANTAGE[rowIndex][columnIndex];
     }
 
     public static String superEffective() {

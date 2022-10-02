@@ -10,7 +10,7 @@ public class ItemBag {
     ArrayList<Item> itemBag = new ArrayList<>();
 
     public ItemBag(double maxBagWeight) {
-        this.maxBagWeight = maxBagWeight;
+        this.MAX_BAG_WEIGHT = maxBagWeight;
     }
 
     public int getNumOfItems() {
@@ -32,11 +32,12 @@ public class ItemBag {
         return roundVal;
     }
 
-    public double getMaxWeight() {return this.maxBagWeight;}
+    public double getMaxWeight() {return this.MAX_BAG_WEIGHT;}
 
+    //we got help from a classmate with the addItem method
     public int addItem(Item newItem) {
         boolean itemAdded = false;
-        if (currentBagWeight + newItem.getWeight() > maxBagWeight) {
+        if (currentBagWeight + newItem.getWeight() > MAX_BAG_WEIGHT) {
             return -1;
         }
         if (itemBag.isEmpty()) {

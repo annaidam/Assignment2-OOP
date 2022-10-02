@@ -1,13 +1,11 @@
+We got help before starting to work on the task 8 that it is useful to use a matrix with calculating the type advantage.
+We had already made a table both on paper and on the code with the type advantages when figuring out the tasks 4 and 5.
 
+We added the new types to the table and tried it out and lucky for us it worked. So we didn't have to do any changes to the code.
 
-You must explain with your own words the impact of this change in your code. Your
-explanation must include: (i) what was your design before and after the change request, (ii)
-what parts of the code did you change (refer to specific classes and methods).
-
-If your design did not change, you should justify what were the advantages of your initial
-design. Explain your design in terms of class / object responsibility. For instance: “We
-decided to define the pokemon behaviour P in class X because of A, B or C. After the
-change, the responsibility of X was moved to class Y because of D, E and G.“
-
-Your explanation must be concise. Therefore, it should not be longer than roughly 600
-words (circa 2-3 paragraphs).
+I think using the matrix from the beginning was super good,
+since then it was kind of easy to just draw the new table with the new types on paper and then copy it to the original matrix.
+We tried a lot of things with the TypeCalc class and the attack method in Pokemon class,
+but it turned out the best way for us to combine those two was just to keep TypeCalc class super simple and do all the other checkings in the attack method.
+If we would have had more time (or a third member) we would have probably also tried to fix the attack method to look cleaner
+and have some other calculations also in the TypeCalc class. But this works and I'm personally so proud of our work <3

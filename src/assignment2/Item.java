@@ -1,38 +1,34 @@
 package assignment2;
 
 public class Item {
-    private String name;
-    private int healing_power;
-    private double weight;
+    private final String NAME;
+    private final int HEALING_POWER;
+    private final double WEIGHT;
 
     public Item(String name, int healing_power, double weight) {
-        this.healing_power = healing_power;
-        this.name = name;
-        this.weight = weight;
+        this.HEALING_POWER = healing_power;
+        this.NAME = name;
+        this.WEIGHT = weight;
     }
 
     public String getItemName()
     {
-        return name;
+        return NAME;
     }
 
     public int getHealing_power()
     {
-        return healing_power;
+        return HEALING_POWER;
     }
 
     public double getWeight()
     {
-        return weight;
+        return WEIGHT;
     }
 
-    /*Two items are equals if they have the same name, healing power and weight values. When
-    printed, an item should return "<item name> heals <heal power> HP. (<weight>)"*/
-
-    /*
     public boolean equalItemName(Object anotherItem) {
         Item otherItem = (Item) anotherItem;
-        if (this.getItemName().equals(otherItem.getItemName()) {
+        if (this.getItemName().equals(otherItem.getItemName())) {
             return true;
         } else {
             return false;
@@ -41,7 +37,7 @@ public class Item {
 
     public boolean equalHealingPower(Object anotherItem) {
         Item otherItem = (Item) anotherItem;
-        if (this.getHealingPower() == otherItem.getHealingPower()) {
+        if (this.HEALING_POWER == otherItem.HEALING_POWER) {
             return true;
         } else {
             return false;
@@ -50,38 +46,22 @@ public class Item {
 
     public boolean equalItemWeight(Object anotherItem) {
         Item otherItem = (Item) anotherItem;
-        if (this.getItemWeight == otherItem.getItemWeight) {
+        if (this.WEIGHT == otherItem.WEIGHT) {
             return true;
         } else {
             return false;
         }
     }
 
-    public boolean equals(Object anotherItem {
-        if (anotherItem == null) {
-            return false;
-        } else if (anotherItem instanceof Item) {
-            Item otherItem = (Item) anotherItem;
-            if (equalItemName(anotherItem) && equalHealingPower(anotherItem) && equalItemWeight(anotherItem) {
-                return true;
-            }
-        }
-        return false;
-    }
-     */
     public boolean equals(Object anotherItem) {
         if (anotherItem == null) {
             return false;
         } else if (anotherItem instanceof Item) {
-            Item otherItem = (Item) anotherItem;
-            if ((this.name.equals(otherItem.name)) && (this.healing_power == otherItem.healing_power) && (this.weight == otherItem.weight)) {
+            if (equalItemName(anotherItem) && equalHealingPower(anotherItem) && equalItemWeight(anotherItem)) {
                 return true;
-            } else {
-                return false;
             }
-        } else {
-            return false;
         }
+        return false;
     }
 
     public String truncateWeight() {

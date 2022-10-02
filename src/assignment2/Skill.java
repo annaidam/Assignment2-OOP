@@ -2,9 +2,9 @@ package assignment2;
 
 public class Skill {
 
-    private String name;
-    private int attackPower;
-    private int energyCost;
+    private final String NAME;
+    private final int ATTACK_POWER;
+    private final int ENERGY_COST;
 
     public Skill(String NAME, int attackPower, int energyCost) {
         this.NAME = NAME;
@@ -21,15 +21,12 @@ public class Skill {
     }
 
     public int getEnergyCost() {
-        return this.energyCost;
+        return this.ENERGY_COST;
     }
 
-    //Two skills are equal if they have the same names, APs and energy costs.
-
-    /*
     public boolean equalSkillName(Object anotherSkill) {
         Skill otherSkill = (Skill) anotherSkill;
-        if (this.getSkillName().equals(otherSkill.getSkillName()) {
+        if (this.getSkillName().equals(otherSkill.getSkillName())) {
             return true;
         } else {
             return false;
@@ -45,7 +42,7 @@ public class Skill {
         }
     }
 
-    public boolean equalAEnergyCost(Object anotherSkill) {
+    public boolean equalEnergyCost(Object anotherSkill) {
         Skill otherSkill = (Skill) anotherSkill;
         if (this.getEnergyCost() == otherSkill.getEnergyCost()) {
             return true;
@@ -58,31 +55,14 @@ public class Skill {
         if (anotherSkill == null) {
             return false;
         } else if (anotherSkill instanceof Skill) {
-            Skill otherSkill = (Skill) anotherSkill;
             if (equalSkillName(anotherSkill) && equalAttackPower(anotherSkill) && equalEnergyCost(anotherSkill)) {
                 return true;
             }
         }
         return false;
     }
-     */
-    public boolean equals(Object anotherSkill) {
-        if (anotherSkill == null) {
-            return false;
-        } else if (anotherSkill instanceof Skill) {
-            Skill otherSkill = (Skill) anotherSkill;
-            if ((this.getSkillName().equals(otherSkill.getSkillName())) && (this.getAttackPower() == otherSkill.getAttackPower()) && (this.getEnergyCost() == otherSkill.getEnergyCost())) {
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
-    }
 
     public String toString() {
-        String skill = this.getSkillName() + " - AP: " + this.getAttackPower() + " EC: " + this.getEnergyCost();
-        return skill;
+        return (this.getSkillName() + " - AP: " + this.getAttackPower() + " EC: " + this.getEnergyCost());
     }
 }
