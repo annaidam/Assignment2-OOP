@@ -5,7 +5,7 @@ import java.math.RoundingMode;
 import java.util.ArrayList;
 
 public class ItemBag {
-    private double maxBagWeight;
+    private final double MAX_BAG_WEIGHT;
     private double currentBagWeight;
     ArrayList<Item> itemBag = new ArrayList<>();
 
@@ -17,22 +17,19 @@ public class ItemBag {
         if (this.itemBag.isEmpty()) {
             return 0;
         } else {
-            int sizeOfBag = this.itemBag.size();
-            return sizeOfBag;
+            return this.itemBag.size();
         }
     }
 
     public double getCurrentWeight() {
-        //find the weight of each item and sum them up
         currentBagWeight = 0;
         if (!this.itemBag.isEmpty()) {
             for (Item currentItem : itemBag) {
                 currentBagWeight += currentItem.getWeight();
             }
         }
-        BigDecimal bd = new BigDecimal(currentBagWeight).setScale(2, RoundingMode.HALF_UP);
-        double result = bd.doubleValue();
-        return result;
+        double roundVal = Math.round(currentBagWeight * 100.0) / 100.0;
+        return roundVal;
     }
 
     public double getMaxWeight() {return this.maxBagWeight;}
@@ -62,8 +59,6 @@ public class ItemBag {
     }
 
     public Item removeItemAt(int index) {
-        //remove an item based on specified index
-        //automatically reorganise the items in the bag
         Item removedItem;
         for (int i = 0; i < this.itemBag.size(); i++) {
             if (index == i) {
@@ -99,8 +94,6 @@ public class ItemBag {
     }
 
     public Item popItem() {
-        //find the heaviest item in the bag ie. the first ite
-        //if bag is empty popping returns to null
         Item heaviestItem;
         if (!itemBag.isEmpty()) {
             heaviestItem = itemBag.get(0);

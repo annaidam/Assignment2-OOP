@@ -2,7 +2,7 @@ package assignment2;
 
 public class Pokemon {
     private String name;
-    private int MAX_HP;
+    private final int MAX_HP;
     private int currentHP;
     private int energyPoints;
     private String pokemonType;
@@ -42,10 +42,6 @@ public class Pokemon {
         return this.MAX_HP;
     }
 
-    /*Two pokemons are equal if they have the same name, type, skill, HP, MAX HP, and EP.
-    When printed, the pokemon should return one of two options below:*/
-
-    /*
     public boolean equalName(Object anotherPokemon) {
         Pokemon otherPokemon = (Pokemon) anotherPokemon;
         if (this.getName().equals(otherPokemon.getName()) {
@@ -75,7 +71,7 @@ public class Pokemon {
 
     public boolean equalMaxHP(Object anotherPokemon) {
         Pokemon otherPokemon = (Pokemon) anotherPokemon;
-        if (this.MAX_HP == MAX_HP) {
+        if (this.MAX_HP == otherPokemon.MAX_HP) {
             return true;
         } else {
             return false;
@@ -109,8 +105,9 @@ public class Pokemon {
         if (anotherPokemon == null) {
             return false;
         } else if (anotherPokemon instanceof Pokemon) {
-            Pokemon otherPokemon = (Pokemon) anotherPokemon;
-            if (equalName(anotherPokemon) && equalType(anotherPokemon) && equalCurrentHP(anotherPokemon) && equalMaxHP(anotherPokemon) && equalEnergyPoints(anotherPokemon) && equalSkills(anotherPokemon)) {
+            if (equalName(anotherPokemon) && equalType(anotherPokemon)
+                    && equalCurrentHP(anotherPokemon) && equalMaxHP(anotherPokemon)
+                    && equalEnergyPoints(anotherPokemon) && equalSkills(anotherPokemon)) {
                 return true;
             }
         }
@@ -167,7 +164,7 @@ public class Pokemon {
         this.pokemonSkill = null;
     }
 
-    //3.2  - Receive Damage and Rest:
+
     public void hasFainted() {
         if (this.currentHP == 0) {
             this.hasFainted = true;
@@ -208,8 +205,8 @@ public class Pokemon {
     public void recoverEnergy() {
         int bonusEnergyPoints = 25;
         if (!this.hasFainted) {
-            this.energyPoints += bonusEnergyPoints; //pokemon can recover energy where a fixed amount of 25 EP is restored.
-            if (this.energyPoints > MAX_VALUE) {  //EP can never be less than zero or greater than 100
+            this.energyPoints += bonusEnergyPoints;
+            if (this.energyPoints > MAX_VALUE) {
                 this.energyPoints = MAX_VALUE;
             }
         }
