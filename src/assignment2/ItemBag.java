@@ -37,92 +37,31 @@ public class ItemBag {
 
     public double getMaxWeight() {return this.maxBagWeight;}
 
-    /*7.1 - Adding items to the bag:
-    The collection of items can accept repeated items and the items are stored in a specific
-    sequence. When adding an item to the bag, the item must be placed in the index where its
-    weight is higher than the items after them and lighter than those before (i.e., sorted by
-    weight).*/
-
-    /*
-       public int addItem(Item newItem) {
-           //adding a new item
-           itemBag.add(newItem);
-           //if bag is empty, we place the item in the first slot
-           if (this.itemBag.isEmpty()) {
-               itemBag.set(0, newItem);
-           //if after adding the item, the bag's weight exceeds the max bag weight,
-           //we remove the added item and return its index BUT because in the example
-           //the removed item is equal to other two items added, this will get the index
-           //of the equal item, not the item we removed
-           } else if (this.currentBagWeight >= this.maxBagWeight) {
-               itemBag.remove(newItem);
-               return itemBag.indexOf(newItem);
-           //after adding the item, we calculate its right place
-           } else {
-               int length = itemBag.size();
-               for (int i = 0; i < length; i++) {
-                   for (int j = length - 1; j > i; j--) {
-                       if (itemBag.get(i).getItemWeight() < itemBag.get(j).getItemWeight()) {
-                           Item temporary = itemBag.get(i);
-                           itemBag.set(i, itemBag.get(j));
-                           itemBag.set(j, temporary);
-                       }
+    public int addItem(Item newItem) {
+        boolean itemAdded = false;
+        if (currentBagWeight + newItem.getWeight() > maxBagWeight) {
+            return -1;
+        }
+        if (itemBag.isEmpty()) {
+            itemBag.add(newItem);
+        } else {
+            for (int i = 0; i < itemBag.size(); i++) {
+               if (!itemAdded) {
+                   if (newItem.getWeight() >= itemBag.get(i).getWeight()) {
+                       itemBag.add(i, newItem);
+                       itemAdded = true;
+                   } else if (i == itemBag.size() - 1) {
+                       itemBag.add(newItem);
+                       itemAdded = true;
                    }
                }
-           }
-
-           return itemBag.indexOf(newItem);
-       }
-           /*
-
-     We start with an ArrayList of length 0, therein, we assign the item to the first, that is, the only available position.
-     That’s the base case.
-
-       For the general case: we may consider the traditional linear search - we iterate over the List.
-       We check whether the value of the current item,
-       i. e., the weight is greater than the value (weight of the item) at the i-th index,
-       if so, we insert the current item at that certain index,
-       using the in-built behaviours of the ArrayList Class - “add(index, item)”,
-       therefore enlarging the List by +1.
-       That’s the whole idea of the algorithm of time complexity O(n).
-
-       2 extra points to consider:
-   - ensure that the maximum weight isn’t exceeded;
-   - ensure that the item will increase the weight stored in the item bag.
-        */
-        public int addItem(Item newItem) {
-            if (this.itemBag.isEmpty()) {
-                itemBag.add(0, newItem);
-                return 0;
             }
-            if(this.currentBagWeight < this.maxBagWeight){
-
-                 for (int i = 0; i < itemBag.size(); i++)
-                    if(newItem.getWeight() >= itemBag.get(i).getWeight()){
-                     itemBag.add(i, newItem);
-                     this.currentBagWeight = this.currentBagWeight + newItem.getWeight();
-                      }
-                }
-            else  {return -1;}
-
-            return itemBag.indexOf(newItem);
         }
+        currentBagWeight += newItem.getWeight();
+        return this.itemBag.indexOf(newItem);
+    }
 
-    //we should specifically return -1 if the MAX weight is exceeded.
-// we had to refactor getItemWeight () with getWeight(), because thats what the test uses
-
-    //otherwise, the method should work, I checked with Michal
-
-    /*7.2 - Removing items:
-    The only way to retrieve a reference to an item in the bag is to remove it. Items are removed
-    based on a specified index. When removing an item, the bag should automatically
-    reorganise itself so that order is preserved and no “empty” slots are left.
-
-    The bag should then return a reference to the removed item. In case the specified index is
-    out of bounds, the method should return null.*/
-
-
-    public String removeItemAt(int index) {
+    public Item removeItemAt(int index) {
         //remove an item based on specified index
         //automatically reorganise the items in the bag
         String removing = "";
