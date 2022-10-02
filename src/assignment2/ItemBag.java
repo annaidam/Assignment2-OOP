@@ -1,6 +1,5 @@
 package assignment2;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class ItemBag {
@@ -30,7 +29,7 @@ public class ItemBag {
         //find the weight of each item and sum them up
         if (!this.itemBag.isEmpty()) {
             for (Item currentItem : itemBag) {
-                currentBagWeight = (currentBagWeight + currentItem.getItemWeight());
+                currentBagWeight = (currentBagWeight + currentItem.getWeight());
             }
         }
         return this.currentBagWeight;
@@ -96,22 +95,22 @@ public class ItemBag {
                 itemBag.add(0, newItem);
                 return 0;
             }
-            int length = itemBag.size();
-
             if(this.currentBagWeight < this.maxBagWeight){
-            for (int i = 0; i < length; i++)
-                if(newItem.getItemWeight() > itemBag.get(i).getItemWeight()){
-                itemBag.add(itemBag.indexOf(itemBag.get(i)), newItem);
-                length = length + 1;
-                this.currentBagWeight = this.currentBagWeight + newItem.getWeight();
-                 }
 
-            }
+                 for (int i = 0; i < itemBag.size(); i++)
+                    if(newItem.getWeight() >= itemBag.get(i).getWeight()){
+                     itemBag.add(i, newItem);
+                     this.currentBagWeight = this.currentBagWeight + newItem.getWeight();
+                      }
+                }
+            else  {return -1;}
+
             return itemBag.indexOf(newItem);
         }
-// we need to replace getItemWeight () with getWeight(), but we cannot access getWeight() because it's in another class
-    // therefore, we need to refactor
-    //also, we might have an infinite loop
+
+    //we should specifically return -1 if the MAX weight is exceeded.
+// we had to refactor getItemWeight () with getWeight(), because thats what the test uses
+
     //otherwise, the method should work, I checked with Michal
 
     /*7.2 - Removing items:

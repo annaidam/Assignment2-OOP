@@ -1,7 +1,5 @@
 package assignment2;
 
-import java.text.DecimalFormat;
-
 public class Item {
     /* Pokemon can use items to heal their health points. Each item has a name, a healing power
     value (integer) and a weight (double). Once created, these values cannot be changed.*/
@@ -25,7 +23,7 @@ public class Item {
         return healing_power;
     }
 
-    public double getItemWeight()
+    public double getWeight()
     {
         return weight;
     }
@@ -89,7 +87,7 @@ public class Item {
     }
 
     public String truncateWeight() {
-        String truncatedWeight = String.format("%.2f", Math.floor((Math.pow(10,2) * this.getItemWeight())) / Math.pow(10,2));
+        String truncatedWeight = String.format("%.2f", Math.floor((Math.pow(10,2) * this.getWeight())) / Math.pow(10,2));
         return truncatedWeight;
     }
 
